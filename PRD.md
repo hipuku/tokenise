@@ -125,7 +125,7 @@ Each entry names the token, the mode, the source value, the output value or none
 
 | Reason | Example |
 |---|---|
-| `dropped-type` | A `duration` written to Tailwind, which has no duration namespace |
+| `dropped-type` | A `duration` written to Figma, which has no duration variable |
 | `dropped-mode` | A dark mode written to a target with one mode |
 | `resolved-alias` | A reference written as its value, because the target cannot hold references |
 | `split-composite` | A `typography` token written as `--text-*` plus companions, with its font family dropped |
