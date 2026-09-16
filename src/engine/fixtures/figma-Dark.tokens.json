@@ -1,0 +1,17 @@
+{
+  "color": {
+    "ink": {
+      "$type": "color",
+      "$value": { "colorSpace": "srgb", "components": [0.95, 0.95, 0.95], "hex": "#f2f2f2" },
+      "$extensions": { "com.figma.variableId": "VariableID:1:1", "com.figma.scopes": ["ALL_SCOPES"] }
+    },
+    "text": {
+      "$type": "color",
+      "$value": "{color.ink}",
+      "$extensions": { "com.figma.variableId": "VariableID:1:2" }
+    }
+  },
+  "radius": {
+    "card": { "$type": "number", "$value": 12, "$extensions": { "com.figma.variableId": "VariableID:1:3" } }
+  }
+}

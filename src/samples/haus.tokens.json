@@ -1,0 +1,955 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "color": {
+    "$type": "color",
+    "aronia": {
+      "100": {
+        "$value": "oklch(97% 0.012 300)",
+        "$description": "Subtle background"
+      },
+      "200": {
+        "$value": "oklch(92% 0.028 300)"
+      },
+      "300": {
+        "$value": "oklch(84% 0.058 300)"
+      },
+      "400": {
+        "$value": "oklch(72% 0.100 300)"
+      },
+      "500": {
+        "$value": "oklch(52% 0.138 300)",
+        "$description": "Default: dusty plum anchor"
+      },
+      "600": {
+        "$value": "oklch(43% 0.125 300)",
+        "$description": "Hover"
+      },
+      "700": {
+        "$value": "oklch(35% 0.105 300)",
+        "$description": "Pressed / on-subtle text"
+      },
+      "800": {
+        "$value": "oklch(26% 0.080 300)"
+      },
+      "850": {
+        "$value": "oklch(22% 0.066 300)"
+      },
+      "900": {
+        "$value": "oklch(18% 0.052 300)"
+      },
+      "950": {
+        "$value": "oklch(12% 0.032 300)"
+      }
+    },
+    "damson": {
+      "0": {
+        "$value": "oklch(100% 0 0)",
+        "$description": "White"
+      },
+      "50": {
+        "$value": "oklch(99% 0.003 290)",
+        "$description": "Near-white: barely-lavender cool cream"
+      },
+      "100": {
+        "$value": "oklch(97% 0.006 290)",
+        "$description": "Subtle surface: cool cream"
+      },
+      "200": {
+        "$value": "oklch(93% 0.008 290)",
+        "$description": "Sunken surface / default border"
+      },
+      "300": {
+        "$value": "oklch(86% 0.010 290)",
+        "$description": "Strong border"
+      },
+      "400": {
+        "$value": "oklch(74% 0.010 290)",
+        "$description": "Disabled / muted"
+      },
+      "500": {
+        "$value": "oklch(60% 0.008 290)",
+        "$description": "Placeholder text"
+      },
+      "600": {
+        "$value": "oklch(48% 0.007 290)",
+        "$description": "Tertiary text"
+      },
+      "700": {
+        "$value": "oklch(37% 0.006 290)",
+        "$description": "Secondary text"
+      },
+      "800": {
+        "$value": "oklch(27% 0.005 290)"
+      },
+      "900": {
+        "$value": "oklch(18% 0.003 290)",
+        "$description": "Primary text / near-black"
+      },
+      "950": {
+        "$value": "oklch(11% 0.002 290)",
+        "$description": "Near-black"
+      }
+    },
+    "elderberry": {
+      "100": {
+        "$value": "oklch(97% 0.020 265)",
+        "$description": "Subtle background"
+      },
+      "200": {
+        "$value": "oklch(93% 0.040 265)",
+        "$description": "Subtle border"
+      },
+      "500": {
+        "$value": "oklch(55% 0.200 265)",
+        "$description": "Default"
+      },
+      "700": {
+        "$value": "oklch(42% 0.160 265)",
+        "$description": "Text on subtle background"
+      },
+      "900": {
+        "$value": "oklch(30% 0.120 265)",
+        "$description": "Emphasis / high-contrast text"
+      },
+      "$description": "Indigo at H=265°, distinct from aronia H=300°"
+    },
+    "greengage": {
+      "100": {
+        "$value": "oklch(97% 0.030 148)",
+        "$description": "Subtle background"
+      },
+      "200": {
+        "$value": "oklch(93% 0.055 148)",
+        "$description": "Subtle border"
+      },
+      "500": {
+        "$value": "oklch(58% 0.185 148)",
+        "$description": "Default"
+      },
+      "700": {
+        "$value": "oklch(45% 0.150 148)",
+        "$description": "Text on subtle background"
+      },
+      "900": {
+        "$value": "oklch(33% 0.110 148)",
+        "$description": "Emphasis / high-contrast text"
+      },
+      "$description": "Green at H=148°"
+    },
+    "mango": {
+      "100": {
+        "$value": "oklch(97% 0.025 65)",
+        "$description": "Subtle background"
+      },
+      "200": {
+        "$value": "oklch(93% 0.045 65)",
+        "$description": "Subtle border"
+      },
+      "500": {
+        "$value": "oklch(60% 0.175 65)",
+        "$description": "Default"
+      },
+      "700": {
+        "$value": "oklch(47% 0.142 65)",
+        "$description": "Text on subtle background"
+      },
+      "900": {
+        "$value": "oklch(38% 0.110 65)",
+        "$description": "Emphasis / high-contrast text"
+      },
+      "$description": "Golden at H=65°"
+    },
+    "cherry": {
+      "100": {
+        "$value": "oklch(97% 0.030 27)",
+        "$description": "Subtle background"
+      },
+      "200": {
+        "$value": "oklch(93% 0.055 27)",
+        "$description": "Subtle border"
+      },
+      "500": {
+        "$value": "oklch(58% 0.200 27)",
+        "$description": "Default"
+      },
+      "700": {
+        "$value": "oklch(44% 0.168 27)",
+        "$description": "Text on subtle background"
+      },
+      "900": {
+        "$value": "oklch(33% 0.110 27)",
+        "$description": "Emphasis / high-contrast text"
+      },
+      "$description": "Red at H=27°"
+    }
+  },
+  "font": {
+    "size": {
+      "11": {
+        "$type": "dimension",
+        "$value": "0.6875rem"
+      },
+      "12": {
+        "$type": "dimension",
+        "$value": "0.75rem"
+      },
+      "13": {
+        "$type": "dimension",
+        "$value": "0.8125rem"
+      },
+      "14": {
+        "$type": "dimension",
+        "$value": "0.875rem"
+      },
+      "16": {
+        "$type": "dimension",
+        "$value": "1rem"
+      },
+      "20": {
+        "$type": "dimension",
+        "$value": "1.25rem"
+      },
+      "24": {
+        "$type": "dimension",
+        "$value": "1.5rem"
+      },
+      "28": {
+        "$type": "dimension",
+        "$value": "1.75rem",
+        "$description": "28px. The step between 24 and 30, added when a second product's largest specimen landed in the gap the ladder skipped."
+      },
+      "30": {
+        "$type": "dimension",
+        "$value": "1.875rem"
+      }
+    },
+    "weight": {
+      "regular": {
+        "$type": "number",
+        "$value": 400
+      },
+      "medium": {
+        "$type": "number",
+        "$value": 500
+      },
+      "semibold": {
+        "$type": "number",
+        "$value": 600
+      },
+      "bold": {
+        "$type": "number",
+        "$value": 700
+      }
+    },
+    "lineHeight": {
+      "tight": {
+        "$type": "number",
+        "$value": 1.15,
+        "$description": "Display"
+      },
+      "tighter": {
+        "$type": "number",
+        "$value": 1.2,
+        "$description": "heading-lg"
+      },
+      "snug": {
+        "$type": "number",
+        "$value": 1.25,
+        "$description": "Heading"
+      },
+      "compact": {
+        "$type": "number",
+        "$value": 1.3,
+        "$description": "Heading-sm, between snug and normal"
+      },
+      "normal": {
+        "$type": "number",
+        "$value": 1.4,
+        "$description": "Labels, short UI text"
+      },
+      "relaxed": {
+        "$type": "number",
+        "$value": 1.5,
+        "$description": "Body"
+      },
+      "loose": {
+        "$type": "number",
+        "$value": 1.6,
+        "$description": "Body-lg, code"
+      }
+    },
+    "tracking": {
+      "tightest": {
+        "$type": "string",
+        "$value": "-0.03em",
+        "$description": "Display"
+      },
+      "tighter": {
+        "$type": "string",
+        "$value": "-0.02em",
+        "$description": "heading-lg"
+      },
+      "tight": {
+        "$type": "string",
+        "$value": "-0.01em",
+        "$description": "Heading, heading-sm"
+      },
+      "normal": {
+        "$type": "string",
+        "$value": "0em",
+        "$description": "Body, labels, mono"
+      },
+      "wide": {
+        "$type": "string",
+        "$value": "0.02em",
+        "$description": "label-sm, field-label"
+      },
+      "wider": {
+        "$type": "string",
+        "$value": "0.04em",
+        "$description": "label-eyebrow, uppercase"
+      },
+      "widest": {
+        "$type": "string",
+        "$value": "0.08em",
+        "$description": "label-xs"
+      }
+    }
+  },
+  "spacing": {
+    "1": {
+      "$value": "0.25rem",
+      "$description": "4px"
+    },
+    "2": {
+      "$value": "0.5rem",
+      "$description": "8px"
+    },
+    "3": {
+      "$value": "0.75rem",
+      "$description": "12px"
+    },
+    "4": {
+      "$value": "1rem",
+      "$description": "16px"
+    },
+    "5": {
+      "$value": "1.25rem",
+      "$description": "20px"
+    },
+    "6": {
+      "$value": "1.5rem",
+      "$description": "24px"
+    },
+    "7": {
+      "$value": "1.75rem",
+      "$description": "28px"
+    },
+    "8": {
+      "$value": "2rem",
+      "$description": "32px"
+    },
+    "10": {
+      "$value": "2.5rem",
+      "$description": "40px"
+    },
+    "12": {
+      "$value": "3rem",
+      "$description": "48px"
+    },
+    "16": {
+      "$value": "4rem",
+      "$description": "64px"
+    },
+    "20": {
+      "$value": "5rem",
+      "$description": "80px"
+    },
+    "px": {
+      "$value": "1px",
+      "$description": "1px. A hairline: optical padding inside a small control, where a 4px step is too much."
+    },
+    "0-5": {
+      "$value": "0.125rem",
+      "$description": "2px. Half a step, for the same optical case."
+    },
+    "$type": "dimension"
+  },
+  "semantic": {
+    "$description": "Intent aliases over primitives. Components reference these only, and never primitives directly.",
+    "color": {
+      "surface-default": {
+        "$value": "{color.damson.0}",
+        "$description": "Page / default surface"
+      },
+      "surface-subtle": {
+        "$value": "{color.damson.100}",
+        "$description": "Subtle container, hover bg"
+      },
+      "surface-raised": {
+        "$value": "{color.damson.0}",
+        "$description": "Card surface, with elevation via shadow"
+      },
+      "surface-overlay": {
+        "$value": "{color.damson.50}",
+        "$description": "Modal / popover background"
+      },
+      "surface-sunken": {
+        "$value": "{color.damson.200}",
+        "$description": "Inset / well surface"
+      },
+      "surface-inverse": {
+        "$value": "{color.damson.900}",
+        "$description": "Dark chip, inverse surface"
+      },
+      "surface-disabled": {
+        "$value": "{color.damson.100}",
+        "$description": "Disabled input / control"
+      },
+      "surface-inverse-hover": {
+        "$value": "oklch(from var(--haus-damson-0) l c h / 0.10)",
+        "$description": "Hover bg on dark surface, 10% alpha applied in CSS"
+      },
+      "ink-primary": {
+        "$value": "{color.damson.900}",
+        "$description": "Primary text"
+      },
+      "ink-secondary": {
+        "$value": "{color.damson.700}",
+        "$description": "Secondary / supporting text"
+      },
+      "ink-tertiary": {
+        "$value": "{color.damson.500}",
+        "$description": "Placeholder, hint text"
+      },
+      "ink-disabled": {
+        "$value": "{color.damson.400}",
+        "$description": "Disabled text"
+      },
+      "ink-inverse": {
+        "$value": "{color.damson.0}",
+        "$description": "Text on dark surfaces"
+      },
+      "ink-link": {
+        "$value": "{color.aronia.500}",
+        "$description": "Anchor link colour"
+      },
+      "ink-on-primary": {
+        "$value": "{color.damson.0}",
+        "$description": "Text on primary-filled surfaces"
+      },
+      "border-subtle": {
+        "$value": "{color.damson.100}",
+        "$description": "Faintest border, for section dividers"
+      },
+      "border-default": {
+        "$value": "{color.damson.200}",
+        "$description": "Standard border"
+      },
+      "border-strong": {
+        "$value": "{color.damson.300}",
+        "$description": "Emphasis border"
+      },
+      "border-disabled": {
+        "$value": "{color.damson.200}",
+        "$description": "Disabled control border"
+      },
+      "border-inverse": {
+        "$value": "oklch(from var(--haus-damson-0) l c h / 0.30)",
+        "$description": "Button border on dark surface, 30% alpha applied in CSS"
+      },
+      "border-inverse-hover": {
+        "$value": "oklch(from var(--haus-damson-0) l c h / 0.50)",
+        "$description": "Hover border on dark surface, 50% alpha applied in CSS"
+      },
+      "primary-default": {
+        "$value": "{color.aronia.500}",
+        "$description": "Primary interactive"
+      },
+      "primary-hover": {
+        "$value": "{color.aronia.600}"
+      },
+      "primary-pressed": {
+        "$value": "{color.aronia.700}"
+      },
+      "primary-subtle": {
+        "$value": "{color.aronia.100}",
+        "$description": "Tinted primary surface"
+      },
+      "primary-on-subtle": {
+        "$value": "{color.aronia.700}",
+        "$description": "Text on primary-subtle"
+      },
+      "primary-disabled": {
+        "$value": "{color.damson.200}"
+      },
+      "backdrop": {
+        "$value": "oklch(from var(--haus-damson-950) l c h / var(--haus-opacity-60))",
+        "$description": "Modal scrim, applied at --opacity-overlay (0.6) in CSS"
+      },
+      "info-subtle": {
+        "$value": "{color.elderberry.100}"
+      },
+      "info-border": {
+        "$value": "{color.elderberry.200}"
+      },
+      "info-default": {
+        "$value": "{color.elderberry.500}"
+      },
+      "info-on-subtle": {
+        "$value": "{color.elderberry.700}"
+      },
+      "info-on-default": {
+        "$value": "{color.damson.0}"
+      },
+      "info-emphasis": {
+        "$value": "{color.elderberry.900}"
+      },
+      "success-subtle": {
+        "$value": "{color.greengage.100}"
+      },
+      "success-border": {
+        "$value": "{color.greengage.200}"
+      },
+      "success-default": {
+        "$value": "{color.greengage.500}"
+      },
+      "success-on-subtle": {
+        "$value": "{color.greengage.700}"
+      },
+      "success-on-default": {
+        "$value": "{color.damson.900}",
+        "$description": "Dark text, because greengage-500 fails with white"
+      },
+      "success-solid": {
+        "$value": "{color.greengage.700}",
+        "$description": "Solid badge bg, white text passes at 6.82:1"
+      },
+      "success-emphasis": {
+        "$value": "{color.greengage.900}"
+      },
+      "warning-subtle": {
+        "$value": "{color.mango.100}"
+      },
+      "warning-border": {
+        "$value": "{color.mango.200}"
+      },
+      "warning-default": {
+        "$value": "{color.mango.500}"
+      },
+      "warning-on-subtle": {
+        "$value": "{color.mango.700}"
+      },
+      "warning-on-default": {
+        "$value": "{color.damson.900}",
+        "$description": "Dark text, because mango-500 fails with white"
+      },
+      "warning-solid": {
+        "$value": "{color.mango.700}",
+        "$description": "Solid badge bg, white text passes at 7.05:1"
+      },
+      "warning-emphasis": {
+        "$value": "{color.mango.900}"
+      },
+      "error-subtle": {
+        "$value": "{color.cherry.100}"
+      },
+      "error-border": {
+        "$value": "{color.cherry.200}"
+      },
+      "error-default": {
+        "$value": "{color.cherry.500}"
+      },
+      "error-on-subtle": {
+        "$value": "{color.cherry.700}"
+      },
+      "error-on-default": {
+        "$value": "{color.damson.0}"
+      },
+      "error-emphasis": {
+        "$value": "{color.cherry.900}"
+      },
+      "radius-control": {
+        "$value": "var(--haus-radius-md)"
+      },
+      "radius-surface": {
+        "$value": "var(--haus-radius-lg)"
+      },
+      "radius-overlay": {
+        "$value": "var(--haus-radius-xl)"
+      },
+      "radius-marker": {
+        "$value": "var(--haus-radius-sm)"
+      },
+      "elevation-raised": {
+        "$value": "var(--haus-shadow-sm)"
+      },
+      "elevation-floating": {
+        "$value": "var(--haus-shadow-lg)"
+      },
+      "elevation-overlay": {
+        "$value": "var(--haus-shadow-xl)"
+      },
+      "modal-width-sm": {
+        "$value": "var(--haus-overlay-width-sm)"
+      },
+      "modal-width-md": {
+        "$value": "var(--haus-overlay-width-md)"
+      },
+      "modal-width-lg": {
+        "$value": "var(--haus-overlay-width-lg)"
+      },
+      "modal-width-xl": {
+        "$value": "var(--haus-overlay-width-xl)"
+      },
+      "popover-width-sm": {
+        "$value": "var(--haus-panel-width-sm)"
+      },
+      "popover-width-md": {
+        "$value": "var(--haus-panel-width-md)"
+      },
+      "popover-width-lg": {
+        "$value": "var(--haus-panel-width-lg)"
+      },
+      "popover-width-xl": {
+        "$value": "var(--haus-panel-width-xl)"
+      },
+      "font-sans": {
+        "$value": "'Manrope', system-ui, sans-serif"
+      },
+      "font-mono": {
+        "$value": "'Fira Code', ui-monospace, monospace"
+      }
+    }
+  },
+  "radius": {
+    "$type": "dimension",
+    "none": {
+      "$value": "0"
+    },
+    "sm": {
+      "$value": "0.25rem"
+    },
+    "md": {
+      "$value": "0.5rem"
+    },
+    "lg": {
+      "$value": "0.75rem"
+    },
+    "xl": {
+      "$value": "1rem"
+    },
+    "2xl": {
+      "$value": "1.5rem",
+      "$description": "Panels, dialogs, sheets"
+    },
+    "full": {
+      "$value": "9999px"
+    }
+  },
+  "duration": {
+    "$type": "duration",
+    "instant": {
+      "$value": "50ms"
+    },
+    "fast": {
+      "$value": "100ms"
+    },
+    "normal": {
+      "$value": "200ms"
+    },
+    "moderate": {
+      "$value": "300ms"
+    },
+    "slow": {
+      "$value": "500ms"
+    },
+    "reduced": {
+      "$value": "0ms",
+      "$description": "Components read this under @media (prefers-reduced-motion: reduce)"
+    }
+  },
+  "easing": {
+    "enter": {
+      "$type": "cubicBezier",
+      "$value": [
+        0,
+        0,
+        0.2,
+        1
+      ],
+      "$description": "Elements appearing: start slow, arrive with energy"
+    },
+    "exit": {
+      "$type": "cubicBezier",
+      "$value": [
+        0.4,
+        0,
+        1,
+        1
+      ],
+      "$description": "Elements leaving: leave quickly, no lingering"
+    },
+    "move": {
+      "$type": "cubicBezier",
+      "$value": [
+        0.4,
+        0,
+        0.2,
+        1
+      ],
+      "$description": "Position changes: balanced, physical"
+    },
+    "spring": {
+      "$type": "cubicBezier",
+      "$value": [
+        0.34,
+        1.56,
+        0.64,
+        1
+      ],
+      "$description": "Slight overshoot for interactive feedback"
+    },
+    "linear": {
+      "$type": "string",
+      "$value": "linear",
+      "$description": "For opacity fades where easing adds no value"
+    }
+  },
+  "motion": {
+    "$description": "Composite duration + easing pairs for common patterns.",
+    "fade-in": {
+      "$type": "string",
+      "$value": "{duration.normal} {easing.enter}"
+    },
+    "fade-out": {
+      "$type": "string",
+      "$value": "{duration.fast} {easing.exit}"
+    },
+    "slide-in": {
+      "$type": "string",
+      "$value": "{duration.moderate} {easing.enter}"
+    },
+    "slide-out": {
+      "$type": "string",
+      "$value": "{duration.fast} {easing.exit}"
+    },
+    "micro": {
+      "$type": "string",
+      "$value": "{duration.fast} {easing.move}",
+      "$description": "Checkbox, toggle"
+    },
+    "interactive": {
+      "$type": "string",
+      "$value": "{duration.normal} {easing.move}",
+      "$description": "Hover, focus"
+    }
+  },
+  "shadow": {
+    "none": {
+      "$type": "string",
+      "$value": "none"
+    },
+    "sm": {
+      "$type": "string",
+      "$value": "0 1px 2px oklch(18% 0.003 290 / 0.06)",
+      "$description": "Subtle card lift, form inputs"
+    },
+    "md": {
+      "$type": "string",
+      "$value": "0 4px 6px -1px oklch(18% 0.003 290 / 0.10), 0 2px 4px -2px oklch(18% 0.003 290 / 0.10)",
+      "$description": "Dropdowns, select menus"
+    },
+    "lg": {
+      "$type": "string",
+      "$value": "0 10px 15px -3px oklch(18% 0.003 290 / 0.10), 0 4px 6px -4px oklch(18% 0.003 290 / 0.07)",
+      "$description": "Modals, dialogs"
+    },
+    "xl": {
+      "$type": "string",
+      "$value": "0 20px 25px -5px oklch(18% 0.003 290 / 0.10), 0 8px 10px -6px oklch(18% 0.003 290 / 0.10)",
+      "$description": "Full-page overlays"
+    },
+    "focus": {
+      "$type": "string",
+      "$value": "0 0 0 2px {color.surface-default}, 0 0 0 4px {color.primary-default}",
+      "$description": "Keyboard focus ring, defined in the semantics layer"
+    }
+  },
+  "zIndex": {
+    "0": {
+      "$value": 0
+    },
+    "10": {
+      "$value": 10
+    },
+    "100": {
+      "$value": 100
+    },
+    "200": {
+      "$value": 200
+    },
+    "300": {
+      "$value": 300
+    },
+    "400": {
+      "$value": 400
+    },
+    "500": {
+      "$value": 500
+    },
+    "600": {
+      "$value": 600
+    },
+    "$type": "number",
+    "$description": "A ladder of raw stacking values. The role that takes each one is in semantics.css."
+  },
+  "controlHeight": {
+    "$type": "dimension",
+    "$description": "Minimum height of an interactive control. A scale of four, not a step off the spacing ladder: 36px and 44px are not on it.",
+    "xs": {
+      "$value": "1.5rem",
+      "$description": "24px, IconButton sm. The WCAG 2.5.8 AA minimum target size, and the floor: core draws an icon button at 22px and vault at 20px, and both are under it. vault already declared this value locally as --control-height-xs, which is what promoted it."
+    },
+    "sm": {
+      "$value": "1.75rem",
+      "$description": "28px, Button sm. Pointer-only density; below the 24px minimum for a target with no spacing exception."
+    },
+    "md": {
+      "$value": "2.25rem",
+      "$description": "36px, the default for Button, Input and Select"
+    },
+    "lg": {
+      "$value": "2.75rem",
+      "$description": "44px, Button lg. The WCAG 2.5.8 AAA target size, and Apple's HIG minimum."
+    }
+  },
+  "borderWidth": {
+    "1": {
+      "$value": "1px"
+    },
+    "2": {
+      "$value": "2px"
+    },
+    "$type": "dimension",
+    "$description": "Raw widths. The role that takes each one is in semantics.css."
+  },
+  "opacity": {
+    "40": {
+      "$value": 0.4
+    },
+    "60": {
+      "$value": 0.6
+    },
+    "$type": "number",
+    "$description": "Raw alphas, named for the percentage. The role that takes each one is in semantics.css."
+  },
+  "iconSize": {
+    "$type": "dimension",
+    "$description": "Font Awesome. Sizes pair with the type scale.",
+    "xs": {
+      "$value": "0.75rem",
+      "$description": "12px, with label-xs"
+    },
+    "sm": {
+      "$value": "1rem",
+      "$description": "16px, with label and body-sm"
+    },
+    "md": {
+      "$value": "1.25rem",
+      "$description": "20px, with body-lg and heading-sm"
+    },
+    "lg": {
+      "$value": "1.5rem",
+      "$description": "24px, with heading"
+    },
+    "xl": {
+      "$value": "2rem",
+      "$description": "32px, standalone or decorative"
+    }
+  },
+  "breakpoint": {
+    "$description": "CSS custom properties cannot be used in @media queries. Consume from index.ts in JS/TS and Tailwind config instead.",
+    "sm": {
+      "$type": "dimension",
+      "$value": "640px",
+      "$description": "Large phones, small tablets"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "768px",
+      "$description": "Tablets"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "1024px",
+      "$description": "Small laptops"
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": "1280px",
+      "$description": "Desktops"
+    },
+    "2xl": {
+      "$type": "dimension",
+      "$value": "1536px",
+      "$description": "Large screens"
+    }
+  },
+  "overlayWidth": {
+    "$type": "dimension",
+    "$description": "How wide a floating surface is allowed to get. Not a step off the spacing ladder: these are proportions of a product's own layout, which is why the modal three are a brand entry and a consumer may restate them.",
+    "xs": {
+      "$value": "22.5rem",
+      "$description": "360px, Toast. One value, and a plain role rather than a brand entry because no consumer has disagreed with it yet."
+    },
+    "sm": {
+      "$value": "25rem",
+      "$description": "400px, Modal sm. Confirm and short form."
+    },
+    "md": {
+      "$value": "35rem",
+      "$description": "560px, Modal md, the default."
+    },
+    "lg": {
+      "$value": "45rem",
+      "$description": "720px, Modal lg. Code, tables and previews."
+    },
+    "xl": {
+      "$value": "56rem",
+      "$description": "896px, Modal xl. Wide dashboards and side-by-side previews. Added when a second consumer's four-step scale met haus's three: the fourth is haus's now rather than the consumer's."
+    }
+  },
+  "panelWidth": {
+    "$type": "dimension",
+    "$description": "How wide a small floating panel is allowed to get: Popover, and the themed popup a Select opens. The popover-scale sibling of overlayWidth, kept separate because a popover holding a form is a different order of size from a modal, and read through --haus-popover-width-* in semantics.css the way overlayWidth is read through --haus-modal-width-*.",
+    "sm": {
+      "$value": "11.25rem",
+      "$description": "180px, Popover sm. A short action menu."
+    },
+    "md": {
+      "$value": "16.25rem",
+      "$description": "260px, Popover md, the default."
+    },
+    "lg": {
+      "$value": "21.25rem",
+      "$description": "340px, Popover lg. A panel holding a form."
+    },
+    "xl": {
+      "$value": "26.25rem",
+      "$description": "420px, Popover xl. The two-line option rows a Select draws."
+    }
+  },
+  "size": {
+    "$type": "dimension",
+    "$description": "Component geometry that is on no ladder and is not spacing. Each was a literal inside a component until haus#53 put width and height into the hardcoded-value rule, which had held min-height and not width since haus#43 first noted the gap.",
+    "marker-dot": {
+      "$value": "0.375rem",
+      "$description": "6px. Badge's status dot and Radio's centre, the same value written twice with no name, which is haus#34's signal."
+    },
+    "toggle-track": {
+      "$value": "2.25rem",
+      "$description": "36px. Reads as control-height-md by coincidence and is not one: it is two thumbs and the travel between them."
+    }
+  }
+}

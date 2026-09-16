@@ -1,0 +1,28 @@
+{
+  "global": {
+    "colors": {
+      "brand": { "value": "#e15e42", "type": "color" },
+      "surface": { "value": "#ffffff", "type": "color" }
+    },
+    "radius": {
+      "sm": { "value": "4", "type": "borderRadius" }
+    },
+    "spacing": {
+      "base": { "value": "8", "type": "spacing" },
+      "double": { "value": "{spacing.base} * 2", "type": "spacing" }
+    },
+    "shadow": {
+      "card": { "value": { "x": "0", "y": "2", "blur": "4", "spread": "0", "color": "#00000033", "type": "dropShadow" }, "type": "boxShadow" }
+    }
+  },
+  "dark": {
+    "colors": {
+      "surface": { "value": "#121213", "type": "color" }
+    }
+  },
+  "$themes": [
+    { "id": "light", "name": "light", "selectedTokenSets": { "global": "enabled" } },
+    { "id": "dark", "name": "dark", "selectedTokenSets": { "global": "source", "dark": "enabled" } }
+  ],
+  "$metadata": { "tokenSetOrder": ["global", "dark"] }
+}

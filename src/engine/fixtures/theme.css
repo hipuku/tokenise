@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+/* A small Tailwind v4 theme with a dark mode. */
+@theme {
+  --color-ink: #1a1a1a;
+  --color-paper: #ffffff;
+  --color-text: var(--color-ink);
+  --spacing: 0.25rem;
+  --spacing-gutter: 1.5rem;
+  --radius-card: 12px;
+  --text-body: 1rem;
+  --text-body--line-height: 1.5;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --text-fluid: clamp(1rem, 2vw, 2rem);
+}
+
+[data-theme="dark"] {
+  --color-text: var(--color-paper);
+}

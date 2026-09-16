@@ -1,0 +1,48 @@
+{
+  "version": "2025.10",
+  "sets": {
+    "base": {
+      "sources": [
+        {
+          "color": {
+            "$type": "color",
+            "ink": { "$value": { "colorSpace": "srgb", "components": [0.1, 0.1, 0.1], "hex": "#1a1a1a" } },
+            "paper": { "$value": { "colorSpace": "srgb", "components": [1, 1, 1], "hex": "#ffffff" } },
+            "accent": { "$value": { "colorSpace": "oklch", "components": [0.7, 0.35, 150] } },
+            "text": { "$value": "{color.ink}", "$description": "Body text" }
+          },
+          "space": {
+            "$type": "dimension",
+            "md": { "$value": { "value": 1, "unit": "rem" } }
+          },
+          "motion": {
+            "fast": { "$type": "duration", "$value": { "value": 150, "unit": "ms" } },
+            "standard": { "$type": "cubicBezier", "$value": [0.2, 0, 0, 1] }
+          },
+          "type": {
+            "body": {
+              "$type": "typography",
+              "$value": {
+                "fontFamily": ["Inter", "sans-serif"],
+                "fontSize": { "value": 16, "unit": "px" },
+                "fontWeight": 400,
+                "lineHeight": 1.5,
+                "letterSpacing": { "value": 0, "unit": "px" }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "modifiers": {
+    "theme": {
+      "contexts": {
+        "light": [],
+        "dark": [{ "color": { "text": { "$type": "color", "$value": "{color.paper}" } } }]
+      },
+      "default": "light"
+    }
+  },
+  "resolutionOrder": [{ "$ref": "#/sets/base" }, { "$ref": "#/modifiers/theme" }]
+}
