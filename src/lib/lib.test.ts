@@ -2,12 +2,13 @@ import { describe, expect, it } from 'vitest'
 import { convert, read } from '@/engine/convert'
 import { joinPath } from '@/engine/types'
 import { SAMPLES } from '@/samples'
+import hausTokens from '@/samples/haus.tokens.json?raw'
 import { compareFormats } from './compare'
 import { summarise, valueText } from './describe'
 
 describe('summarise', () => {
   it('counts each token once, by its worst outcome', () => {
-    const haus = SAMPLES.find((s) => s.id === 'haus')!.documents
+    const haus = [{ name: 'tokens.json', text: hausTokens }]
     const conversion = convert(haus, 'figma')
     const summary = summarise(conversion.set.tokens.map((t) => t.path), conversion.allLosses)
     expect(summary.tokens).toBe(conversion.set.tokens.length)

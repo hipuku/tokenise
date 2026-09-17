@@ -22,8 +22,8 @@ export const EMPTY_DOCUMENT: InputDocument = { name: 'tokens.json', text: '' }
  * each of them. Reading happens here, on every change: a token file is small and
  * the engine is fast, so there is no button to press.
  */
-export function useTokenInput(): TokenInputState {
-  const [documents, setDocuments] = useState<InputDocument[]>([EMPTY_DOCUMENT])
+export function useTokenInput(initialDocuments: InputDocument[] = [EMPTY_DOCUMENT]): TokenInputState {
+  const [documents, setDocuments] = useState<InputDocument[]>(initialDocuments)
   const [source, setSource] = useState<SourceChoice>('auto')
 
   const isEmpty = documents.every((d) => !d.text.trim())

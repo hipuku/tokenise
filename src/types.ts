@@ -1,1 +1,1 @@
-export type ViewId = 'about' | 'convert' | 'inspect' | 'compare'
+export type ViewId = 'about' | 'convert' | 'compare' | 'difference'

@@ -1,18 +1,17 @@
 import { useState } from 'react'
-import { ArrowLeftRight, Columns4, Info, ListTree } from 'lucide-react'
+import { ArrowLeftRight, Columns4, FileSearch, Info } from 'lucide-react'
 import { AppShell, Colophon, SocialBar } from 'kern'
 import { ViewAbout } from '@/components/ViewAbout'
 import { ViewConvert } from '@/components/ViewConvert'
-import { ViewInspect } from '@/components/ViewInspect'
 import { ViewCompare } from '@/components/ViewCompare'
-import { useTokenInput } from '@/lib/useTokenInput'
+import { ViewDifference } from '@/components/ViewDifference'
 import type { ViewId } from './types'
 
 const NAV_ITEMS = [
-  { id: 'about',   label: 'About this tool',  icon: Info           },
-  { id: 'convert', label: 'Convert tokens',   icon: ArrowLeftRight },
-  { id: 'inspect', label: 'Inspect tokens',   icon: ListTree       },
-  { id: 'compare', label: 'Compare formats',  icon: Columns4       },
+  { id: 'about',      label: 'About this tool', icon: Info           },
+  { id: 'convert',    label: 'Convert tokens',  icon: ArrowLeftRight },
+  { id: 'compare',    label: 'Compare a token', icon: Columns4       },
+  { id: 'difference', label: 'Check a file',    icon: FileSearch     },
 ]
 
 const LOGO_FILLS = {
@@ -23,7 +22,6 @@ const LOGO_FILLS = {
 
 export default function App() {
   const [activeView, setActiveView] = useState<ViewId>('about')
-  const input = useTokenInput()
 
   return (
     <AppShell
@@ -32,7 +30,7 @@ export default function App() {
       activeId={activeView}
       onNavigate={(id) => setActiveView(id as ViewId)}
       accentActiveClass="text-flare"
-      social={<SocialBar siteName="tokenise" githubUrl="https://github.com/hipuku/tokenise" />}
+      social={<SocialBar siteName="tokenise" />}
       colophon={<Colophon name="tokenise" hoverFills={LOGO_FILLS} />}
       smallScreenNotice={
         <div className="flex flex-col gap-2 text-center max-w-xs">
@@ -45,10 +43,15 @@ export default function App() {
         </div>
       }
     >
-      {activeView === 'about'   && <ViewAbout onNavigate={setActiveView} />}
-      {activeView === 'convert' && <ViewConvert input={input} />}
-      {activeView === 'inspect' && <ViewInspect input={input} />}
-      {activeView === 'compare' && <ViewCompare input={input} />}
+      {/*
+       * Each view owns its own input state, as in the sibling experiments. The
+       * views are mounted only while active, so switching tabs starts the tool
+       * fresh — nothing pasted in one carries into another.
+       */}
+      {activeView === 'about'      && <ViewAbout />}
+      {activeView === 'convert'    && <ViewConvert />}
+      {activeView === 'compare'    && <ViewCompare />}
+      {activeView === 'difference' && <ViewDifference />}
     </AppShell>
   )
 }
