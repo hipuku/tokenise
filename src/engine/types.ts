@@ -9,7 +9,7 @@ export type FormatId = 'dtcg' | 'figma' | 'tokens-studio' | 'tailwind'
 
 export const FORMAT_LABEL: Record<FormatId, string> = {
   dtcg: 'DTCG 2025.10',
-  figma: 'Figma export',
+  figma: 'Figma variables',
   'tokens-studio': 'Tokens Studio',
   tailwind: 'Tailwind v4',
 }

@@ -1,6 +1,7 @@
 import { write } from '@/engine/convert'
 import { indexTokens, resolveValue } from '@/engine/resolve'
 import { propertyName } from '@/engine/tailwind'
+import { REASON, type Outcome } from './describe'
 import { DEFAULT_OPTIONS, joinPath, type FormatId, type LossEntry, type Token, type TokenSet } from '@/engine/types'
 
 export interface FormatSnippet {
@@ -69,4 +70,13 @@ export function compareFormats(set: TokenSet, token: Token): FormatSnippet[] {
       format === 'tailwind' ? cssSnippet(files[0].text, token) : jsonSnippet(format, files, token.path, small)
     return { format, text, losses: losses.filter((l) => l.token === key) }
   })
+}
+
+
+/** The worst thing a format did to the token: dropped beats changed beats kept. */
+export function verdict(snippet: FormatSnippet): Outcome | 'kept' {
+  const outcomes = snippet.losses.map((l) => REASON[l.reason].outcome)
+  if (outcomes.includes('dropped')) return 'dropped'
+  if (outcomes.includes('changed')) return 'changed'
+  return 'kept'
 }

@@ -1,131 +1,106 @@
-import { useRef } from 'react'
-import { FilePlus, Upload, X } from 'lucide-react'
-import { Button, ChipGroup, Field, IconButton, Input, Textarea, ToggleChip } from 'kern'
-import { FORMAT_LABEL, type FormatId } from '@/engine/types'
+import { useRef, useState } from 'react'
+import { Upload, X } from 'lucide-react'
+import { Button } from 'kern'
+import { FORMAT_LABEL } from '@/engine/types'
 import { MAX_INPUT_BYTES } from '@/engine/document'
-import { EMPTY_DOCUMENT, type SourceChoice, type TokenInputState } from '@/lib/useTokenInput'
-
-const SOURCE_CHOICES: SourceChoice[] = ['auto', 'dtcg', 'figma', 'tokens-studio', 'tailwind']
-
-const PLACEHOLDER = `{
-  "color": {
-    "$type": "color",
-    "ink": { "$value": { "colorSpace": "srgb", "components": [0.1, 0.1, 0.1] } },
-    "text": { "$value": "{color.ink}" }
-  }
-}`
+import { EMPTY_DOCUMENT, type TokenInputState } from '@/lib/useTokenInput'
+import { CodeField, FormatChip } from './CodeField'
 
 /**
- * The input every tool reads from: one or more files, pasted or opened.
+ * The token file a report reads. One code box that is always there, with no
+ * mode to enter or leave: paste into it, drop files onto it, or open them from
+ * its corner. An opened file fills the box and stays editable, so pasting and
+ * opening are two ways into the same place. The format is always detected and
+ * shown as the box's chip.
  *
- * Several files are needed for two formats. Figma exports one file per mode,
- * and a DTCG resolver or a Tokens Studio project can refer to other files by
- * name. So each file keeps its name, and the name is editable.
+ * Several files (Figma exports one per mode; resolvers and Tokens Studio
+ * projects can span files) cannot share one field, so they show as a list of
+ * names until cleared.
  */
 export function TokenInput({ input }: { input: TokenInputState }) {
-  const { documents, setDocuments, source, setSource, outcome, error } = input
+  const { documents, setDocuments, outcome, error, isEmpty } = input
   const fileInput = useRef<HTMLInputElement>(null)
+  const [dragging, setDragging] = useState(false)
   const several = documents.length > 1
-
-  const update = (index: number, patch: Partial<(typeof documents)[number]>) =>
-    setDocuments(documents.map((d, i) => (i === index ? { ...d, ...patch } : d)))
 
   const open = async (files: FileList | null) => {
     if (!files?.length) return
-    const read = await Promise.all([...files].map(async (f) => ({ name: f.name, text: await f.text() })))
-    setDocuments(read)
+    setDocuments(await Promise.all([...files].map(async (f) => ({ name: f.name, text: await f.text() }))))
   }
 
   const modes = outcome?.set.modes ?? []
-  const aside = outcome ? (
-    <span className="type-annotation text-ink-muted">
-      {FORMAT_LABEL[outcome.format]}, {outcome.set.tokens.length} tokens
-      {modes.length > 1 ? `, ${modes.length} modes` : ''}
-    </span>
+  const chip = error ? (
+    <FormatChip error>Not recognised</FormatChip>
+  ) : outcome ? (
+    <FormatChip>
+      {FORMAT_LABEL[outcome.format]} · {outcome.set.tokens.length} {outcome.set.tokens.length === 1 ? 'token' : 'tokens'}
+      {modes.length > 1 ? ` · ${modes.length} modes` : ''}
+    </FormatChip>
   ) : undefined
 
   return (
-    <div className="flex flex-col gap-4">
-      <Field
-        label={several ? 'Files' : 'Tokens'}
-        aside={aside}
-        error={error ?? undefined}
-        hint={
-          several
-            ? 'Figma per-mode files take their mode from the file name.'
-            : `Paste a file, or open one or more. Up to ${MAX_INPUT_BYTES / 1000} KB.`
+    <div
+      className="flex flex-col gap-2"
+      onDragOver={(e) => {
+        e.preventDefault()
+        setDragging(true)
+      }}
+      onDragLeave={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node)) setDragging(false)
+      }}
+      onDrop={(e) => {
+        e.preventDefault()
+        setDragging(false)
+        void open(e.dataTransfer.files)
+      }}
+    >
+      <CodeField
+        value={several ? '' : documents[0].text}
+        onValueChange={(text) => setDocuments([{ ...documents[0], text }])}
+        language={outcome?.format === 'tailwind' ? 'css' : 'json'}
+        invalid={Boolean(error)}
+        placeholder={`Paste a token file, or drop or open one. DTCG, Figma variables, Tokens Studio or Tailwind CSS, up to ${MAX_INPUT_BYTES / 1000} KB.`}
+        heightClass="h-80"
+        className={dragging ? 'border-dashed border-(--primary)' : undefined}
+        chip={chip}
+        aria-label="Tokens"
+        actions={
+          <>
+            {!isEmpty && (
+              <Button size="sm" variant="ghost" className="text-flare hover:text-flare" onClick={() => setDocuments([EMPTY_DOCUMENT])}>
+                <X className="w-3.5 h-3.5" />
+                Clear
+              </Button>
+            )}
+            <Button size="sm" variant="surface" onClick={() => fileInput.current?.click()}>
+              <Upload className="w-3.5 h-3.5" />
+              Open file
+            </Button>
+            <input
+              ref={fileInput}
+              type="file"
+              multiple
+              accept=".json,.css,application/json,text/css"
+              className="hidden"
+              onChange={(e) => {
+                void open(e.target.files)
+                e.target.value = ''
+              }}
+            />
+          </>
         }
       >
-        {(control) => (
-          <div className="flex flex-col gap-3">
-            {documents.map((document, i) => (
-              <div key={i} className="flex flex-col gap-2">
-                {several && (
-                  <div className="flex items-center gap-2">
-                    <Input
-                      value={document.name}
-                      onChange={(e) => update(i, { name: e.target.value })}
-                      aria-label={`File ${i + 1} name`}
-                      className="font-mono"
-                    />
-                    <IconButton
-                      variant="ghost"
-                      aria-label={`Remove ${document.name}`}
-                      onClick={() => setDocuments(documents.filter((_, j) => j !== i))}
-                    >
-                      <X className="w-4 h-4" />
-                    </IconButton>
-                  </div>
-                )}
-                <Textarea
-                  value={document.text}
-                  onChange={(e) => update(i, { text: e.target.value })}
-                  rows={several ? 8 : 12}
-                  placeholder={i === 0 ? PLACEHOLDER : undefined}
-                  spellCheck={false}
-                  invalid={Boolean(error)}
-                  className="font-mono"
-                  {...(i === 0 ? control : { 'aria-label': `File ${i + 1} contents` })}
-                />
-              </div>
+        {several && (
+          <div className="flex flex-wrap gap-2 px-4 pb-4">
+            {documents.map((d) => (
+              <span key={d.name} className="type-code-sm text-void-80 rounded-inline bg-surface-raised px-2 py-1">
+                {d.name}
+              </span>
             ))}
           </div>
         )}
-      </Field>
-
-      <div className="flex flex-wrap items-center gap-2">
-        <Button size="sm" onClick={() => fileInput.current?.click()}>
-          <Upload className="w-3.5 h-3.5" />
-          Open files
-        </Button>
-        <Button
-          size="sm"
-          variant="ghost"
-          onClick={() => setDocuments([...documents, { ...EMPTY_DOCUMENT, name: `file-${documents.length + 1}.json` }])}
-        >
-          <FilePlus className="w-3.5 h-3.5" />
-          Add a file
-        </Button>
-        <input
-          ref={fileInput}
-          type="file"
-          multiple
-          accept=".json,.css,application/json,text/css"
-          className="hidden"
-          onChange={(e) => {
-            void open(e.target.files)
-            e.target.value = ''
-          }}
-        />
-      </div>
-
-      <ChipGroup label="Read as">
-        {SOURCE_CHOICES.map((choice) => (
-          <ToggleChip key={choice} active={source === choice} onClick={() => setSource(choice)}>
-            {choice === 'auto' ? 'Detect' : FORMAT_LABEL[choice as FormatId]}
-          </ToggleChip>
-        ))}
-      </ChipGroup>
+      </CodeField>
+      {error && <p className="type-annotation text-flare">{error}</p>}
     </div>
   )
 }

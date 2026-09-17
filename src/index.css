@@ -12,6 +12,34 @@
   --link:       var(--color-solstice);
 }
 
+@layer components {
+  /*
+   * A smaller mono size for code editors and blocks. kern only ships `type-code`
+   * (0.9375rem); at editor density that reads large, so this drops to the
+   * annotation size in the mono family with a code line-height. Candidate to
+   * promote into kern as a `code-sm` type token.
+   */
+  .type-code-sm {
+    font-family: var(--font-mono);
+    font-size: var(--text-annotation);
+    line-height: 1.6;
+    letter-spacing: 0;
+  }
+
+  /* Syntax-highlight tokens, themed with the accent palette (see lib/highlight.ts). */
+  .tok-key     { color: var(--color-solstice); }
+  .tok-str     { color: var(--color-dusk); }
+  .tok-num     { color: var(--color-flare); }
+  .tok-bool    { color: var(--color-solstice); }
+  .tok-null    { color: var(--color-void-50); }
+  .tok-punc    { color: var(--color-void-50); }
+  .tok-ref     { color: var(--color-flare); }
+  .tok-comment { color: var(--color-void-40); font-style: italic; }
+  .tok-atrule  { color: var(--color-flare); }
+  .tok-prop    { color: var(--color-solstice); }
+  .tok-func    { color: var(--color-dusk); }
+}
+
 @layer base {
   html, body, #root {
     height: 100%;

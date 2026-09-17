@@ -177,7 +177,22 @@ describe('loss report', () => {
   })
 
   it('reports a type Figma has no variable for', () => {
-    expect(lossFor(dtcgToFigma.allLosses, 'motion.fast')[0].reason).toBe('dropped-type')
+    expect(lossFor(dtcgToFigma.allLosses, 'motion.standard')[0].reason).toBe('dropped-type')
+  })
+
+  it('writes duration to Figma in seconds and font weight as a number, the forms its import accepts', () => {
+    const set: TokenSet = {
+      modes: ['default'],
+      tokens: [
+        { path: ['motion', 'fast'], type: 'duration', values: { default: { kind: 'literal', value: { value: 150, unit: 'ms' } } } },
+        { path: ['font', 'bold'], type: 'fontWeight', values: { default: { kind: 'literal', value: 700 } } },
+      ],
+    }
+    const { files, losses } = write(set, 'figma')
+    const json = JSON.parse(files[0].text)
+    expect(json.motion.fast).toEqual({ $type: 'duration', $value: { value: 0.15, unit: 's' } })
+    expect(json.font.bold).toEqual({ $type: 'number', $value: 700 })
+    expect(losses).toEqual([])
   })
 
   it('reports rem written as px, at the chosen base', () => {

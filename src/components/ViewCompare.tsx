@@ -1,80 +1,51 @@
 import { useMemo, useState } from 'react'
-import { Card, Field, Input, Label, ToolView, ViewContainer } from 'kern'
-import { FORMAT_LABEL, joinPath } from '@/engine/types'
+import { ToggleChip, ViewHeader } from 'kern'
+import { read } from '@/engine/convert'
 import { compareFormats } from '@/lib/compare'
-import { REASON } from '@/lib/describe'
-import type { TokenInputState } from '@/lib/useTokenInput'
-import { OutcomeMark } from './LossReport'
-import { TokenInput } from './TokenInput'
-import { SampleActions } from './SampleActions'
+import { EXAMPLES } from '@/lib/examples'
+import { Block } from './Block'
+import { FormatVerdicts } from './FormatVerdicts'
+import { PropertyTable } from './PropertyTable'
+import { RosettaPanel } from './RosettaPanel'
 
-export function ViewCompare({ input }: { input: TokenInputState }) {
-  const { outcome } = input
-  const set = outcome?.set
-  const [query, setQuery] = useState('')
+/**
+ * Compare a token: a handful of fixed examples, each written in all four formats
+ * at once. They are chosen so each format fails a different one. Read verdict
+ * first, then part by part, then as each format writes it.
+ */
+export function ViewCompare() {
+  const [exampleId, setExampleId] = useState(EXAMPLES[0].id)
+  const example = EXAMPLES.find((e) => e.id === exampleId)!
 
-  const paths = useMemo(() => set?.tokens.map((t) => joinPath(t.path)) ?? [], [set])
-  const token = set?.tokens.find((t) => joinPath(t.path) === query) ?? set?.tokens[0]
-  const snippets = useMemo(() => (set && token ? compareFormats(set, token) : []), [set, token])
+  const { set, token, snippets } = useMemo(() => {
+    const outcome = read([{ name: example.fileName ?? 'token.json', text: example.source }])
+    const token = outcome.set.tokens.find((t) => t.path.join('.') === example.token) ?? outcome.set.tokens[0]
+    return { set: outcome.set, token, snippets: compareFormats(outcome.set, token) }
+  }, [example])
 
   return (
-    <ViewContainer width="lg">
-      <ToolView
-        title="Compare formats"
-        description="One token written in all four formats side by side, with what each format could not hold."
-        isEmpty={input.isEmpty}
-        input={<TokenInput input={input} />}
-        empty={<SampleActions input={input}>Nothing to compare yet. Paste a token file above, or load one of these.</SampleActions>}
-      >
-        {set && token && (
-          <>
-            <Field label="Token" hint="Start typing a token path." aside={<span className="type-annotation text-ink-muted">{paths.length} tokens</span>}>
-              {(control) => (
-                <>
-                  <Input
-                    value={query}
-                    placeholder={joinPath(token.path)}
-                    onChange={(e) => setQuery(e.target.value)}
-                    list="token-paths"
-                    className="font-mono"
-                    spellCheck={false}
-                    {...control}
-                  />
-                  <datalist id="token-paths">
-                    {paths.map((p) => (
-                      <option key={p} value={p} />
-                    ))}
-                  </datalist>
-                </>
-              )}
-            </Field>
-
-            <div className="grid grid-cols-2 gap-3">
-              {snippets.map((snippet) => (
-                <Card key={snippet.format} className="flex flex-col gap-3 min-w-0">
-                  <Label as="span" className="type-annotation-sc text-void-60">
-                    {FORMAT_LABEL[snippet.format]}
-                  </Label>
-                  {snippet.text ? (
-                    <pre className="type-code text-void-70 whitespace-pre-wrap break-all max-h-72 overflow-auto">{snippet.text}</pre>
-                  ) : (
-                    <p className="type-annotation text-void-60">Not written.</p>
-                  )}
-                  {snippet.losses.map((loss) => (
-                    <div key={`${loss.reason}|${loss.mode}|${loss.detail}`} className="flex flex-col gap-1">
-                      <OutcomeMark outcome={REASON[loss.reason].outcome} />
-                      <p className="type-annotation text-void-60">
-                        {loss.mode && set.modes.length > 1 ? `${loss.mode}: ` : ''}
-                        {loss.detail}
-                      </p>
-                    </div>
-                  ))}
-                </Card>
-              ))}
-            </div>
-          </>
-        )}
-      </ToolView>
-    </ViewContainer>
+    <div className="mx-auto w-full max-w-5xl flex flex-col gap-8">
+      <ViewHeader
+        title="Compare a token"
+        description="The same token written in all four formats. Each example breaks a different format, so pick one to see what each keeps, changes or drops."
+      />
+      <div role="group" aria-label="Example" className="flex flex-wrap justify-center gap-2">
+        {EXAMPLES.map((e) => (
+          <ToggleChip key={e.id} active={e.id === exampleId} onClick={() => setExampleId(e.id)}>
+            {e.label}
+          </ToggleChip>
+        ))}
+      </div>
+      <Block title="At a glance">
+        <FormatVerdicts snippets={snippets} />
+      </Block>
+      <Block title="By property">
+        <PropertyTable example={example} snippets={snippets} />
+      </Block>
+      <Block title="As written">
+        <RosettaPanel set={set} token={token} />
+      </Block>
+    </div>
   )
 }
+

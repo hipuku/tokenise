@@ -12,17 +12,20 @@ import {
   type WriteOptions,
   type WriteResult,
 } from './types'
-import { colourToSrgb, dimensionToPx, isColorValue, isDimensionValue, parseCssColour, parseDimensionOrZero } from './values'
+import { colourToSrgb, dimensionToPx, isColorValue, isDimensionValue, isDurationValue, parseCssColour, parseDimensionOrZero } from './values'
 
 /* ─────────────────────────────────────────────────────────────────────────────
    Figma's native variables export is DTCG-shaped JSON, one file per mode, with
    Figma's own metadata under `com.figma.*` extensions. So reading it is reading
    DTCG once per file and naming the mode after the file.
 
-   Writing it is where the loss is. A Figma variable is a colour, a number, a
-   string or a boolean: there are no composite variables (typography and shadow
-   are styles, and the export does not carry styles), no durations, no curves,
-   no rem. Every one of those is reported rather than approximated silently.
+   Writing it is where the loss is. Figma's import accepts colour (sRGB, HSL),
+   dimension in px only, fontFamily as a single name, duration in s only,
+   number, and string (help.figma.com, "Modes for variables", import section).
+   There are no composite variables (typography, shadow, border, transition and
+   gradient are styles or nothing, and the export does not carry styles), no
+   curves, no rem, no font-weight type. rem and font stacks are reported; ms to
+   s and a font weight written as a number are exact, so they are not.
    ────────────────────────────────────────────────────────────────────────── */
 
 const FIGMA_EXTENSION = /^com\.figma\./
@@ -44,7 +47,19 @@ export function readFigma(documents: readonly InputDocument[], losses: Losses): 
   return { modes, tokens: [...merged.values()] }
 }
 
-const WRITABLE_TYPES = new Set(['color', 'dimension', 'number', 'fontFamily', 'fontWeight'])
+const WRITABLE_TYPES = new Set(['color', 'dimension', 'number', 'fontFamily', 'fontWeight', 'duration'])
+
+/** Where Figma keeps what a composite describes, when it keeps it at all. */
+const FIGMA_STYLE: Record<string, string> = {
+  typography: 'Type is a text style, and the variables export does not carry styles.',
+  shadow: 'Shadows are effect styles, and the variables export does not carry styles.',
+  gradient: 'Gradients are paint styles, and the variables export does not carry styles.',
+  border: 'A border is set per layer; only its width and colour can be separate variables.',
+  transition: 'Transitions belong to prototype interactions, not variables.',
+}
+
+/** The DTCG type Figma's import accepts for each writable type. */
+const FIGMA_TYPE: Record<string, string> = { fontWeight: 'number' }
 
 export function writeFigma(set: TokenSet, options: WriteOptions): WriteResult {
   const losses = new Losses()
@@ -56,7 +71,7 @@ export function writeFigma(set: TokenSet, options: WriteOptions): WriteResult {
       return false
     }
     if (COMPOSITE_TYPES.includes(token.type)) {
-      losses.add('dropped-composite', token.path, `Figma has no ${token.type} variable; it is a style, and the export does not carry styles.`)
+      losses.add('dropped-composite', token.path, `Figma has no ${token.type} variable. ${FIGMA_STYLE[token.type] ?? 'Figma has nothing to hold it.'}`)
       return false
     }
     if (!WRITABLE_TYPES.has(token.type)) {
@@ -108,6 +123,10 @@ export function writeFigma(set: TokenSet, options: WriteOptions): WriteResult {
         }
         return literal
       }
+      case 'duration': {
+        if (!isDurationValue(literal)) break
+        return literal.unit === 's' ? literal : { value: literal.value / 1000, unit: 's' }
+      }
       case 'fontFamily': {
         if (typeof literal === 'string') return literal
         if (Array.isArray(literal) && typeof literal[0] === 'string') {
@@ -132,7 +151,7 @@ export function writeFigma(set: TokenSet, options: WriteOptions): WriteResult {
       if (!value) continue
       const figmaValue = valueFor(token, value, mode)
       if (figmaValue === undefined) continue
-      const leaf: Record<string, unknown> = { $type: token.type, $value: figmaValue }
+      const leaf: Record<string, unknown> = { $type: FIGMA_TYPE[token.type!] ?? token.type, $value: figmaValue }
       if (token.description) leaf.$description = token.description
       if (token.extensions) {
         const kept = Object.fromEntries(Object.entries(token.extensions).filter(([k]) => FIGMA_EXTENSION.test(k)))
