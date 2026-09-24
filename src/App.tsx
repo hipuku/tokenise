@@ -30,7 +30,7 @@ export default function App() {
       activeId={activeView}
       onNavigate={(id) => setActiveView(id as ViewId)}
       accentActiveClass="text-flare"
-      social={<SocialBar siteName="tokenise" />}
+      social={<SocialBar siteName="tokenise" githubUrl="https://github.com/hipuku/tokenise" />}
       colophon={<Colophon name="tokenise" hoverFills={LOGO_FILLS} />}
       smallScreenNotice={
         <div className="flex flex-col gap-2 text-center max-w-xs">
