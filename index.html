@@ -1,17 +1,82 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en-GB" class="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Design token converter: DTCG, Figma's variables export, Tokens Studio and Tailwind v4, with a report of every token the conversion changes or drops." />
-    <title>tokenise — design token converter</title>
+    <meta name="description" content="Convert design tokens between DTCG, Figma variables, Tokens Studio and Tailwind v4, with a report of every token the conversion changes or drops." />
+    <title>tokenise: design token converter for DTCG, Figma and Tailwind</title>
+    <link rel="canonical" href="https://tokenise.hipuku.dev/" />
+    <!-- Link previews read the static HTML without running scripts, so every URL is absolute. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tokenise.hipuku.dev/" />
+    <meta property="og:site_name" content="tokenise" />
+    <meta property="og:title" content="tokenise: design token converter for DTCG, Figma and Tailwind" />
+    <meta property="og:description" content="Convert design tokens between DTCG, Figma variables, Tokens Studio and Tailwind v4, with a report of every token the conversion changes or drops." />
+    <meta property="og:locale" content="en_GB" />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://tokenise.hipuku.dev/#website",
+            "name": "tokenise",
+            "url": "https://tokenise.hipuku.dev/",
+            "inLanguage": "en-GB",
+            "publisher": {
+              "@id": "https://hipuku.dev/#person"
+            }
+          },
+          {
+            "@type": "WebApplication",
+            "@id": "https://tokenise.hipuku.dev/#app",
+            "name": "tokenise",
+            "url": "https://tokenise.hipuku.dev/",
+            "description": "Convert design tokens between DTCG, Figma variables, Tokens Studio and Tailwind v4, with a report of every token the conversion changes or drops.",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript. Designed for desktop browsers.",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "inLanguage": "en-GB",
+            "license": "https://opensource.org/licenses/MIT",
+            "author": {
+              "@type": "Person",
+              "@id": "https://hipuku.dev/#person",
+              "name": "hipuku",
+              "url": "https://hipuku.dev"
+            },
+            "publisher": {
+              "@id": "https://hipuku.dev/#person"
+            }
+          }
+        ]
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300;400;500;600;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <main>
+        <h1>tokenise: Design token converter</h1>
+        <p>Convert design tokens between DTCG, Figma variables, Tokens Studio and Tailwind v4, with a report of every token the conversion changes or drops.</p>
+        <ul>
+          <li>Convert a token file from one format to another.</li>
+          <li>Compare how each format writes eleven tricky tokens.</li>
+          <li>Check a file: how much of it each format keeps.</li>
+        </ul>
+        <p>tokenise runs in the browser and needs JavaScript. By <a href="https://hipuku.dev">hipuku</a>.</p>
+      </main>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

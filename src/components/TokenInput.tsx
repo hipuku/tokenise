@@ -81,7 +81,7 @@ export function TokenInput({ input }: { input: TokenInputState }) {
               type="file"
               multiple
               accept=".json,.css,application/json,text/css"
-              className="hidden"
+              hidden
               onChange={(e) => {
                 void open(e.target.files)
                 e.target.value = ''
