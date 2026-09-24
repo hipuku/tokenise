@@ -5,7 +5,7 @@ import { OutcomeMark } from './OutcomeMark'
 
 /**
  * One cell per format: the format as the heading, the verdict under it, the
- * reason last — three steps down in size, so the answer reads before any code.
+ * reason last: three steps down in size, so the answer reads before any code.
  */
 export function FormatVerdicts({ snippets }: { snippets: FormatSnippet[] }) {
   return (

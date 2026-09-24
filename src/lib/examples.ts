@@ -21,7 +21,7 @@ import type { FormatSnippet } from './compare'
  *   Studio can only file it as "other".
  * - Transition: a composite only CSS can spell in one value.
  * - Gradient: in DTCG, and none of the other three has a variable for it.
- * - Modes: every format holds light and dark, each its own way — a resolver
+ * - Modes: every format holds light and dark, each its own way: a resolver
  *   modifier, a file per mode, a set per theme, a selector block.
  * - Reference: every format keeps an alias as an alias.
  * - Raw expression: a clamp() is CSS. JSON formats with typed values cannot

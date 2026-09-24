@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 
 /**
  * An outcome by icon and word as well as colour, since flare is this tool's
- * accent and not only its error colour — colour alone could not carry it.
+ * accent and not only its error colour: colour alone could not carry it.
  */
 export function OutcomeMark({ outcome }: { outcome: Outcome }) {
   const { icon: Icon, label, colour } = OUTCOME[outcome]

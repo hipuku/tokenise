@@ -8,8 +8,8 @@ const TARGETS: FormatId[] = ['dtcg', 'figma', 'tokens-studio', 'tailwind']
 const pct = (n: number, total: number) => `${total ? (n / total) * 100 : 0}%`
 
 /**
- * One stacked bar per format: how much of the whole file survives it — kept,
- * changed, dropped — with a fidelity percentage. The top-line answer to "which
+ * One stacked bar per format: how much of the whole file survives it (kept,
+ * changed, dropped), with a fidelity percentage. The top-line answer to "which
  * format is safest for these tokens", and DTCG's full bar is the thesis: the
  * standard is the one that loses nothing.
  */

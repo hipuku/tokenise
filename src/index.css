@@ -7,7 +7,10 @@
 :root {
   --background: var(--color-void-0);
   --foreground: var(--color-void-90);
-  --primary:    var(--color-flare);
+  /* The light step, not the base: kern draws --primary as text on the dark
+     surfaces, where flare's base measured 3.3:1 against the 4.5:1 text needs.
+     The focus ring only needs 3:1, which the base meets. */
+  --primary:    var(--color-flare-light);
   --ring:       var(--color-flare);
   --link:       var(--color-solstice);
 }

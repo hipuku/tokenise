@@ -29,7 +29,7 @@ export default function App() {
       navItems={NAV_ITEMS}
       activeId={activeView}
       onNavigate={(id) => setActiveView(id as ViewId)}
-      accentActiveClass="text-flare"
+      accentActiveClass="text-flare-light"
       social={<SocialBar siteName="tokenise" githubUrl="https://github.com/hipuku/tokenise" />}
       colophon={<Colophon name="tokenise" hoverFills={LOGO_FILLS} />}
       smallScreenNotice={
@@ -46,7 +46,7 @@ export default function App() {
       {/*
        * Each view owns its own input state, as in the sibling experiments. The
        * views are mounted only while active, so switching tabs starts the tool
-       * fresh — nothing pasted in one carries into another.
+       * fresh: nothing pasted in one carries into another.
        */}
       {activeView === 'about'      && <ViewAbout />}
       {activeView === 'convert'    && <ViewConvert />}

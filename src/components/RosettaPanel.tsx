@@ -1,7 +1,8 @@
 import { Check } from 'lucide-react'
-import { Card, CopyButton } from 'kern'
+import { Card, CopyButton, focusRing } from 'kern'
 import { FORMAT_LABEL, type Token, type TokenSet } from '@/engine/types'
 import { compareFormats } from '@/lib/compare'
+import { cn } from '@/lib/utils'
 import { REASON } from '@/lib/describe'
 import { highlight } from '@/lib/highlight'
 import { FormatChip } from './CodeField'
@@ -9,7 +10,7 @@ import { OutcomeMark } from './OutcomeMark'
 
 /**
  * One token written in all four formats side by side, each snippet syntax-
- * highlighted, with a divider and then what that format did to it — changed,
+ * highlighted, with a divider and then what that format did to it: changed,
  * dropped, or kept exactly. The literal form of the thesis: one decision, four
  * dialects, and DTCG the one that holds it whole.
  */
@@ -28,8 +29,13 @@ export function RosettaPanel({ set, token }: { set: TokenSet; token: Token }) {
             </div>
 
             {snippet.text ? (
+              // Focusable, because a region that scrolls but cannot take focus
+              // cannot be scrolled from the keyboard.
               <pre
-                className="h-64 overflow-auto type-code-sm text-void-70 whitespace-pre-wrap break-all"
+                tabIndex={0}
+                role="region"
+                aria-label={`${FORMAT_LABEL[snippet.format]} snippet`}
+                className={cn('h-64 overflow-auto rounded-sm type-code-sm text-void-70 whitespace-pre-wrap break-all', focusRing)}
                 dangerouslySetInnerHTML={{ __html: highlight(snippet.text, lang) }}
               />
             ) : (

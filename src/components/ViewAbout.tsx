@@ -83,7 +83,7 @@ export function ViewAbout() {
       <Section title="What gets reported">
         <p className="type-p-sm text-void-60">
           A token has the same meaning when it converts with nothing to report, even if the syntax looks nothing alike.
-          Otherwise it falls under one of eleven reasons, grouped by what happened to it — the same reasons Compare and
+          Otherwise it falls under one of eleven reasons, grouped by what happened to it. They are the same reasons Compare and
           Check a file use.
         </p>
         <BulletList>

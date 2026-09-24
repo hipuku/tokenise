@@ -8,7 +8,7 @@ import kernPrimitives from './kern-primitives.css?raw'
 export interface Sample {
   id: string
   label: string
-  /** The format this file is written in — one preset per dialect. */
+  /** The format this file is written in: one preset per dialect. */
   format: FormatId
   /** One line on what makes this file interesting to convert. */
   hint: string
@@ -18,7 +18,7 @@ export interface Sample {
 /**
  * One small preset per source format, so the list itself shows the four dialects
  * and every conversion is meaningful (a preset never converts to its own format
- * by default). Deliberately tiny — not production exports — each shaped to carry
+ * by default). Deliberately tiny (not production exports), each shaped to carry
  * a couple of the features the formats disagree about.
  */
 export const SAMPLES: Sample[] = [

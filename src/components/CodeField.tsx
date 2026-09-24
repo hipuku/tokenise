@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import EditorImport from 'react-simple-code-editor'
-import { CopyButton, StatusChip } from 'kern'
+import { CopyButton, StatusChip, focusRing } from 'kern'
 import { highlight, type CodeLang } from '@/lib/highlight'
 import { cn } from '@/lib/utils'
 
@@ -58,7 +58,13 @@ export function CodeField({
     >
       {value && <CopyButton text={value} className="absolute top-2 right-2 z-10 w-7 h-7" />}
 
-      <div className="flex-1 min-h-0 overflow-auto pt-4 pr-8 type-code-sm">
+      {/* Read-only, the scroll area is the field: named from aria-label, and
+          focusable, since a region that scrolls but cannot take focus cannot
+          be scrolled from the keyboard. Editable, the textarea carries both. */}
+      <div
+        className={cn('flex-1 min-h-0 overflow-auto pt-4 pr-8 type-code-sm rounded-card', readOnly && focusRing)}
+        {...(readOnly ? { role: 'region', tabIndex: 0, ...aria } : {})}
+      >
         {children ||
           (readOnly ? (
             value ? (

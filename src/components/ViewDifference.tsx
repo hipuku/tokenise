@@ -11,7 +11,7 @@ const TARGETS: FormatId[] = ['dtcg', 'figma', 'tokens-studio', 'tailwind']
 
 /**
  * Check a file: what happens to your own tokens. Compare is the reference for
- * how each format handles a kind of token; this is the report for a real file —
+ * how each format handles a kind of token; this is the report for a real file:
  * how much of it each format keeps, then token by token for the one you pick.
  */
 export function ViewDifference() {
@@ -23,7 +23,7 @@ export function ViewDifference() {
     <div className="mx-auto w-full max-w-5xl flex flex-col gap-8">
       <ViewHeader
         title="Check a file"
-        description="Paste or open your token file to see what each format keeps, changes or drops — token by token."
+        description="Paste or open your token file to see what each format keeps, changes or drops, token by token."
       />
 
       <TokenInput input={input} />
