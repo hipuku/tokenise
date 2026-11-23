@@ -1,0 +1,62 @@
+{
+  "name": "@hipuku/dtcg-cli",
+  "version": "0.1.0",
+  "description": "Convert design tokens between DTCG, Figma variables, Tokens Studio and Tailwind v4 from the command line, with a report of what each conversion loses.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "author": "hipuku",
+  "homepage": "https://github.com/hipuku/tokenise/tree/main/packages/dtcg-cli#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hipuku/tokenise.git",
+    "directory": "packages/dtcg-cli"
+  },
+  "keywords": [
+    "design-tokens",
+    "dtcg",
+    "cli",
+    "figma",
+    "tokens-studio",
+    "tailwind"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "bin": {
+    "dtcg": "./dist/bin.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/cli.d.ts",
+      "default": "./dist/cli.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@hipuku/dtcg": "workspace:^"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.19.2",
+    "eslint": "^10.14.0",
+    "globals": "^17.14.0",
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.72.1",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}

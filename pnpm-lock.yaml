@@ -139,6 +139,37 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0(@types/node@24.19.2)(jsdom@31.0.1)(vite@8.3.8(@types/node@24.19.2)(jiti@2.7.0))
 
+  packages/dtcg-cli:
+    dependencies:
+      '@hipuku/dtcg':
+        specifier: workspace:^
+        version: link:../dtcg
+    devDependencies:
+      '@eslint/js':
+        specifier: ^10.0.1
+        version: 10.0.1(eslint@10.15.0(jiti@2.7.0))
+      '@types/node':
+        specifier: ^24.19.2
+        version: 24.19.2
+      eslint:
+        specifier: ^10.14.0
+        version: 10.15.0(jiti@2.7.0)
+      globals:
+        specifier: ^17.14.0
+        version: 17.14.0
+      typescript:
+        specifier: ^6.0.2
+        version: 6.0.3
+      typescript-eslint:
+        specifier: ^8.72.1
+        version: 8.72.2(eslint@10.15.0(jiti@2.7.0))(typescript@6.0.3)
+      vite:
+        specifier: ^8.3.8
+        version: 8.3.8(@types/node@24.19.2)(jiti@2.7.0)
+      vitest:
+        specifier: ^5.1.0
+        version: 5.1.0(@types/node@24.19.2)(jsdom@31.0.1)(vite@8.3.8(@types/node@24.19.2)(jiti@2.7.0))
+
 packages:
 
   '@adobe/css-tools@4.5.0':
