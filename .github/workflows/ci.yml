@@ -10,50 +10,73 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
-  ci:
-    name: Lint, Typecheck, Test, Build
+  # One job per check, named as WORKFLOW-STANDARD names them, so a red tick says
+  # which check failed and a ruleset can require each one. Format is missing:
+  # the repository has no Prettier yet, and adopting it reformats 37 files.
+  #
+  # kern is pinned to a commit and pnpm fetches it as a codeload tarball over
+  # HTTPS, so no key, token or URL rewrite is needed.
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v7
-
       - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: pnpm
-
-      # kern is pinned to a commit and pnpm fetches it as a codeload tarball
-      # over HTTPS, so no key, token or URL rewrite is needed.
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Lint
+      - run: pnpm install --frozen-lockfile
+      - name: ESLint
         run: pnpm run lint
-
       # House style does not use an em dash. Ratcheted against a baseline, as in
       # kern: new ones fail, and existing ones can only come down.
-      - name: Lint prose
+      - name: Prose
         run: pnpm run lint:prose
 
-      - name: Typecheck
-        run: pnpm run typecheck
+  typecheck:
+    name: Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run typecheck
 
-      - name: Test
-        run: pnpm test
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
 
-      - name: Build
-        run: pnpm run build
-
-      # The unit suite renders in jsdom, which has no layout and no colour, so
-      # contrast, focus visibility and the worker are only checked here, in a
-      # real browser against the production build.
+  # The unit suite renders in jsdom, which has no layout and no colour, so
+  # contrast, focus visibility and the worker are only checked here, in a real
+  # browser against the production build.
+  e2e:
+    name: End to end
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
       - name: Install Playwright
         run: pnpm --filter web exec playwright install chromium --with-deps
-
-      - name: End-to-end
-        run: pnpm run e2e
-
+      - run: pnpm run e2e
       - name: Keep the trace when it fails
         if: failure()
         uses: actions/upload-artifact@v7
@@ -62,10 +85,24 @@ jobs:
           path: apps/web/test-results/
           retention-days: 7
 
+  build:
+    name: Build
+    needs: [lint, typecheck, test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run build
+
   deploy:
     name: Deploy to Cloudflare Pages
     runs-on: ubuntu-latest
-    needs: ci
+    needs: [build, e2e]
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
     steps:
