@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { Check } from 'lucide-react'
-import { write } from '@/engine/convert'
-import { DEFAULT_OPTIONS, joinPath, type FormatId, type LossEntry, type TokenSet } from '@/engine/types'
+import { write } from '@hipuku/dtcg'
+import { DEFAULT_OPTIONS, joinPath, type FormatId, type LossEntry, type TokenSet } from '@hipuku/dtcg'
 import { REASON, type Outcome } from '@/lib/describe'
 import { OutcomeMark } from './OutcomeMark'
 

@@ -10,8 +10,8 @@ import {
   cubicBezierToCss,
   dimensionToCss,
   durationToCss,
-} from '@/engine/values'
-import { joinPath, type LossEntry, type LossReason, type TokenValue } from '@/engine/types'
+} from '@hipuku/dtcg'
+import { joinPath, type LossEntry, type LossReason, type TokenValue } from '@hipuku/dtcg'
 
 /* ─────────────────────────────────────────────────────────────────────────────
    Words for the loss report, in one place.

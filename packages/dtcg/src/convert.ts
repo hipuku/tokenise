@@ -1,11 +1,11 @@
-import { checkSize, Losses, type InputDocument } from './document'
-import { readDtcg } from './dtcgRead'
-import { writeDtcg } from './dtcgWrite'
-import { detectFormat } from './detect'
-import { inferReferenceTypes } from './resolve'
-import { readFigma, writeFigma } from './figma'
-import { readTailwind, writeTailwind } from './tailwind'
-import { readTokensStudio, writeTokensStudio } from './tokensStudio'
+import { checkSize, Losses, type InputDocument } from './document.js'
+import { readDtcg } from './dtcgRead.js'
+import { writeDtcg } from './dtcgWrite.js'
+import { detectFormat } from './detect.js'
+import { inferReferenceTypes } from './resolve.js'
+import { readFigma, writeFigma } from './figma.js'
+import { readTailwind, writeTailwind } from './tailwind.js'
+import { readTokensStudio, writeTokensStudio } from './tokensStudio.js'
 import {
   DEFAULT_OPTIONS,
   type FormatId,
@@ -13,7 +13,7 @@ import {
   type OutputFile,
   type TokenSet,
   type WriteOptions,
-} from './types'
+} from './types.js'
 
 export interface ReadOutcome {
   format: FormatId

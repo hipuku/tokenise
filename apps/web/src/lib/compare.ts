@@ -1,8 +1,8 @@
-import { write } from '@/engine/convert'
-import { indexTokens, resolveValue } from '@/engine/resolve'
-import { propertyName } from '@/engine/tailwind'
+import { write } from '@hipuku/dtcg'
+import { indexTokens, resolveValue } from '@hipuku/dtcg'
+import { propertyName } from '@hipuku/dtcg'
 import { REASON, type Outcome } from './describe'
-import { DEFAULT_OPTIONS, joinPath, type FormatId, type LossEntry, type Token, type TokenSet } from '@/engine/types'
+import { DEFAULT_OPTIONS, joinPath, type FormatId, type LossEntry, type Token, type TokenSet } from '@hipuku/dtcg'
 
 export interface FormatSnippet {
   format: FormatId

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { ToggleChip, ViewHeader } from 'kern'
-import { FORMAT_LABEL, type FormatId } from '@/engine/types'
+import { FORMAT_LABEL, type FormatId } from '@hipuku/dtcg'
 import { useTokenInput } from '@/lib/useTokenInput'
 import { Block } from './Block'
 import { FidelityBars } from './FidelityBars'

@@ -1,4 +1,4 @@
-import { ReadError, joinPath, type LossEntry, type LossReason, type Token } from './types'
+import { ReadError, joinPath, type LossEntry, type LossReason, type Token } from './types.js'
 
 /** One pasted or dropped file. The name matters for per-mode files and resolver `$ref`s. */
 export interface InputDocument {

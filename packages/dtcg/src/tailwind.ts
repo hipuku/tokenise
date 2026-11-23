@@ -1,5 +1,5 @@
-import { Losses, mergeTokens, type InputDocument } from './document'
-import { indexTokens, resolveValue, sameValue, valueIn } from './resolve'
+import { Losses, mergeTokens, type InputDocument } from './document.js'
+import { indexTokens, resolveValue, sameValue, valueIn } from './resolve.js'
 import {
   joinPath,
   type Literal,
@@ -9,7 +9,7 @@ import {
   type TokenValue,
   type WriteOptions,
   type WriteResult,
-} from './types'
+} from './types.js'
 import {
   colourToCss,
   cubicBezierToCss,
@@ -27,7 +27,7 @@ import {
   parseDuration,
   parseFontFamily,
   parseFontWeight,
-} from './values'
+} from './values.js'
 
 /* ─────────────────────────────────────────────────────────────────────────────
    Tailwind v4 keeps its tokens as custom properties in `@theme` blocks, named by

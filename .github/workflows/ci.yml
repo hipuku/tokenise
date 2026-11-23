@@ -28,6 +28,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # The app imports @hipuku/dtcg from its dist/, which is gitignored, so the
+      # packages build before anything typechecks or tests against them.
+      - name: Build packages
+        run: pnpm --filter "./packages/*" run build
+
       - name: Lint
         run: pnpm run lint
 

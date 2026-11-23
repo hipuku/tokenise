@@ -1,8 +1,8 @@
 import { useRef, useState } from 'react'
 import { Upload, X } from 'lucide-react'
 import { Button } from 'kern'
-import { FORMAT_LABEL } from '@/engine/types'
-import { MAX_INPUT_BYTES } from '@/engine/document'
+import { FORMAT_LABEL } from '@hipuku/dtcg'
+import { MAX_INPUT_BYTES } from '@hipuku/dtcg'
 import { EMPTY_DOCUMENT, type TokenInputState } from '@/lib/useTokenInput'
 import { CodeField, FormatChip } from './CodeField'
 

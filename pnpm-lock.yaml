@@ -10,15 +10,15 @@ importers:
 
   apps/web:
     dependencies:
+      '@hipuku/dtcg':
+        specifier: workspace:*
+        version: link:../../packages/dtcg
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
-      culori:
-        specifier: ^4.0.2
-        version: 4.0.2
       kern:
         specifier: github:hipuku/kern#v1.5.0
         version: https://codeload.github.com/hipuku/kern/tar.gz/7e5d2ba1d2f93b0e86d488ab6285650e5e6cdc6d(lucide-react@1.73.0(@types/react@19.3.0)(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -62,9 +62,6 @@ importers:
       '@testing-library/user-event':
         specifier: ^14.6.8
         version: 14.6.12(@testing-library/dom@10.4.2)
-      '@types/culori':
-        specifier: ^4.0.1
-        version: 4.0.1
       '@types/node':
         specifier: ^24.19.2
         version: 24.19.2
@@ -110,6 +107,37 @@ importers:
       vitest-axe:
         specifier: ^0.1.0
         version: 0.1.0(vitest@5.1.0(@types/node@24.19.2)(jsdom@31.0.1)(vite@8.3.8(@types/node@24.19.2)(jiti@2.7.0)))
+
+  packages/dtcg:
+    dependencies:
+      culori:
+        specifier: ^4.0.2
+        version: 4.0.2
+    devDependencies:
+      '@eslint/js':
+        specifier: ^10.0.1
+        version: 10.0.1(eslint@10.15.0(jiti@2.7.0))
+      '@types/culori':
+        specifier: ^4.0.1
+        version: 4.0.1
+      eslint:
+        specifier: ^10.14.0
+        version: 10.15.0(jiti@2.7.0)
+      globals:
+        specifier: ^17.14.0
+        version: 17.14.0
+      typescript:
+        specifier: ^6.0.2
+        version: 6.0.3
+      typescript-eslint:
+        specifier: ^8.72.1
+        version: 8.72.2(eslint@10.15.0(jiti@2.7.0))(typescript@6.0.3)
+      vite:
+        specifier: ^8.3.8
+        version: 8.3.8(@types/node@24.19.2)(jiti@2.7.0)
+      vitest:
+        specifier: ^5.1.0
+        version: 5.1.0(@types/node@24.19.2)(jsdom@31.0.1)(vite@8.3.8(@types/node@24.19.2)(jiti@2.7.0))
 
 packages:
 

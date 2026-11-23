@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
-import { read, type ReadOutcome } from '@/engine/convert'
-import type { InputDocument } from '@/engine/document'
-import { ReadError, type FormatId } from '@/engine/types'
+import { read, type ReadOutcome } from '@hipuku/dtcg'
+import type { InputDocument } from '@hipuku/dtcg'
+import { ReadError, type FormatId } from '@hipuku/dtcg'
 
 export type SourceChoice = FormatId | 'auto'
 

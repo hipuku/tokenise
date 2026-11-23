@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { ToggleChip, ViewHeader } from 'kern'
-import { read } from '@/engine/convert'
+import { read } from '@hipuku/dtcg'
 import { compareFormats } from '@/lib/compare'
 import { EXAMPLES } from '@/lib/examples'
 import { Block } from './Block'

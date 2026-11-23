@@ -1,5 +1,5 @@
 import { Check } from 'lucide-react'
-import { FORMAT_LABEL } from '@/engine/types'
+import { FORMAT_LABEL } from '@hipuku/dtcg'
 import { verdict, type FormatSnippet } from '@/lib/compare'
 import { OutcomeMark } from './OutcomeMark'
 

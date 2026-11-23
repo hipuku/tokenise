@@ -1,9 +1,9 @@
-import { isRecord, parseJson, type InputDocument } from './document'
-import { isResolverDocument } from './dtcgRead'
-import { hasFigmaExtensions } from './figma'
-import { looksLikeTailwind } from './tailwind'
-import { looksLikeTokensStudio } from './tokensStudio'
-import { ReadError, type FormatId } from './types'
+import { isRecord, parseJson, type InputDocument } from './document.js'
+import { isResolverDocument } from './dtcgRead.js'
+import { hasFigmaExtensions } from './figma.js'
+import { looksLikeTailwind } from './tailwind.js'
+import { looksLikeTokensStudio } from './tokensStudio.js'
+import { ReadError, type FormatId } from './types.js'
 
 /**
  * Which format the input is, from its shape. Order matters: Figma's export is

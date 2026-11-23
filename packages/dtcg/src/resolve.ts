@@ -1,4 +1,4 @@
-import { joinPath, type Token, type TokenSet, type TokenValue } from './types'
+import { joinPath, type Token, type TokenSet, type TokenValue } from './types.js'
 
 export type Index = Map<string, Token>
 

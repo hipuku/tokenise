@@ -1,0 +1,139 @@
+/*
+ * ─────────────────────────────────────────────────────────────────────────────
+ * GENERATED FILE: DO NOT EDIT.
+ *
+ * Source:    src/tokens/tokens.ts
+ * Regenerate: npm run tokens
+ *
+ * Edits here are overwritten and will fail `npm run tokens:check` in CI.
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* ─── Fonts ───────────────────────────────────────────────────────────── */
+  --font-sans: 'Parkinsans', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'Fira Code', monospace;
+
+  /* ─── Type scale sizes ────────────────────────────────────────────────── */
+  --text-display:       clamp(3.5rem, 7vw + 1rem, 7.125rem);
+  --text-h1:            clamp(2.625rem, 5vw + 0.75rem, 5.1875rem);
+  --text-h2:            clamp(2rem, 3.5vw + 0.5rem, 3.75rem);
+  --text-h3:            clamp(1.5rem, 2.5vw + 0.25rem, 2.5rem);
+  --text-h4:            clamp(1.25rem, 1.5vw + 0.25rem, 1.75rem);
+  --text-h5:            clamp(1.125rem, 1vw + 0.25rem, 1.375rem);
+  --text-h6:            1.125rem;
+  --text-p-lg:          1.375rem;
+  --text-p-base:        1.125rem;
+  --text-p-sm:          1rem;
+  --text-annotation:    0.8125rem;
+  --text-annotation-sc: 1rem;
+  --text-button:        1rem;
+  --text-code:          0.9375rem;
+
+  /* ─── Spacing ─────────────────────────────────────────────────────────── */
+  /* Every numeric utility multiplies this base: p-4 = calc(--spacing * 4). */
+  --spacing: 0.25rem;
+  --spacing-tight:    0.25rem;
+  --spacing-field:    0.5rem;
+  --spacing-card:     0.75rem;
+  --spacing-section:  1rem;
+  --spacing-view:     1.5rem;
+  --spacing-major:    2rem;
+
+  /* ─── Radius ──────────────────────────────────────────────────────────── */
+  --radius-inline:   4px;
+  --radius-control:  8px;
+  --radius-card:     12px;
+  --radius-pill:     9999px;
+
+  /* ─── Breakpoints ─────────────────────────────────────────────────────── */
+  --breakpoint-sm:     40rem;
+  --breakpoint-md:     48rem;
+  --breakpoint-lg:     64rem;
+  --breakpoint-xl:     80rem;
+
+  /* ─── Motion ──────────────────────────────────────────────────────────── */
+  --ease-standard:    cubic-bezier(0.2, 0, 0, 1);
+  --ease-decelerate:  cubic-bezier(0, 0, 0.2, 1);
+  --ease-accelerate:  cubic-bezier(0.4, 0, 1, 1);
+  --ease-sharp:       cubic-bezier(0.4, 0, 0.6, 1);
+  --ease-smooth:      cubic-bezier(0.45, 0, 0.55, 1);
+  --duration-instant:  0.1s;
+  --duration-fast:     0.15s;
+  --duration-base:     0.2s;
+  --duration-slow:     0.3s;
+  --duration-enter:    0.4s;
+  --duration-reduced:  0s;
+
+  /* ─── Colour primitives ───────────────────────────────────────────────── */
+  --color-nebula-dark:     #0D7A4F; --color-nebula:     #15AD70; --color-nebula-light:     #B4EDCF;
+  --color-aurora-dark:     #5A9E3A; --color-aurora:     #82D25D; --color-aurora-light:     #C5F0A9;
+  --color-tidal-dark:      #3FA8A1; --color-tidal:      #68D0CA; --color-tidal-light:      #B3EBE4;
+  --color-orbit-dark:      #4A9FD0; --color-orbit:      #73BDE7; --color-orbit-light:      #C4E5F7;
+  --color-pulsar-dark:     #4468D8; --color-pulsar:     #7193ED; --color-pulsar-light:     #C2CFFA;
+  --color-quasar-dark:     #9B72E6; --color-quasar:     #BF9FF1; --color-quasar-light:     #E4D6FB;
+  --color-corona-dark:     #F28BAD; --color-corona:     #F9C3D6; --color-corona-light:     #FCE4EE;
+  --color-dusk-dark:       #E0B090; --color-dusk:       #F5D4C0; --color-dusk-light:       #FAF0E8;
+  --color-flare-dark:      #C83D25; --color-flare:      #E15E42; --color-flare-light:      #F0A090;
+  --color-solstice-dark:   #D46A0A; --color-solstice:   #F78D2C; --color-solstice-light:   #FDE4C0;
+  --color-supernova-dark:  #D4A000; --color-supernova:  #FFC700; --color-supernova-light:  #FFE480;
+  --color-void-0:     #121213; --color-void-10:    #1F1F20; --color-void-20:    #2B2B2C;
+  --color-void-30:    #383839; --color-void-40:    #575759; --color-void-50:    #929295;
+  --color-void-60:    #B1B1B3; --color-void-70:    #D3D3D5; --color-void-80:    #E2E2E5;
+  --color-void-90:    #F1F1F4;
+
+  /* ─── Semantic colour roles ───────────────────────────────────────────── */
+  /* Utilities: bg-surface-raised, text-ink-body, border-line-subtle, … */
+  --color-surface-page:     var(--surface-page);
+  --color-surface-panel:    var(--surface-panel);
+  --color-surface-raised:   var(--surface-raised);
+  --color-surface-hover:    var(--surface-hover);
+  --color-ink-title:        var(--ink-title);
+  --color-ink-strong:       var(--ink-strong);
+  --color-ink-lead:         var(--ink-lead);
+  --color-ink-body:         var(--ink-body);
+  --color-ink-muted:        var(--ink-muted);
+  --color-line-subtle:      var(--line-subtle);
+  --color-line:             var(--line);
+  --color-line-strong:      var(--line-strong);
+  --color-background:       var(--background);
+  --color-foreground:       var(--foreground);
+  --color-primary:          var(--primary);
+  --color-ring:             var(--ring);
+  --color-link:             var(--link);
+}
+
+/* ─── Layering ────────────────────────────────────────────────────────── */
+/* Not a Tailwind namespace; reach for these as z-(--z-panel). */
+:root {
+  --z-backdrop:  30;
+  --z-panel:     40;
+  --z-control:   50;
+}
+
+/* ─── Theme (dark-only) ───────────────────────────────────────────────── */
+/*
+ * The override seam. An experiment redefines any of these in its own
+ * index.css and every kern component follows, without forking anything.
+ */
+:root {
+  --surface-page:    var(--color-void-0);
+  --surface-panel:   var(--color-void-10);
+  --surface-raised:  var(--color-void-20);
+  --surface-hover:   var(--color-void-30);
+  --ink-title:       var(--color-void-90);
+  --ink-strong:      var(--color-void-80);
+  --ink-lead:        var(--color-void-70);
+  --ink-body:        var(--color-void-60);
+  --ink-muted:       var(--color-void-50);
+  --line-subtle:     var(--color-void-20);
+  --line:            var(--color-void-30);
+  --line-strong:     var(--color-void-40);
+  --background:      var(--color-void-0);
+  --foreground:      var(--color-void-90);
+  --primary:         var(--color-pulsar);
+  --ring:            var(--color-pulsar);
+  --link:            var(--color-pulsar);
+}

@@ -1,5 +1,5 @@
-import type { InputDocument } from '@/engine/document'
-import type { FormatId } from '@/engine/types'
+import type { InputDocument } from '@hipuku/dtcg'
+import type { FormatId } from '@hipuku/dtcg'
 import mixed from './mixed.dtcg.json?raw'
 import figma from './figma.tokens.json?raw'
 import tokensStudio from './tokens-studio.json?raw'

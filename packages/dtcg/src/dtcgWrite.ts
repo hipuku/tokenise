@@ -1,5 +1,5 @@
-import { isRecord, Losses } from './document'
-import { indexTokens, resolveValue, sameValue, untypedDetail, valueIn, type Index } from './resolve'
+import { isRecord, Losses } from './document.js'
+import { indexTokens, resolveValue, sameValue, untypedDetail, valueIn, type Index } from './resolve.js'
 import {
   COMPOSITE_TYPES,
   joinPath,
@@ -8,8 +8,8 @@ import {
   type TokenSet,
   type TokenValue,
   type WriteResult,
-} from './types'
-import { parseCssColour, parseDimensionOrZero, parseDuration } from './values'
+} from './types.js'
+import { parseCssColour, parseDimensionOrZero, parseDuration } from './values.js'
 
 /* ─────────────────────────────────────────────────────────────────────────────
    Writes DTCG 2025.10. One mode is a plain token file. Several modes are a

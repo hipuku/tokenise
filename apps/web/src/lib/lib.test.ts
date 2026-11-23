@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { convert, read } from '@/engine/convert'
-import { joinPath } from '@/engine/types'
+import { convert, read } from '@hipuku/dtcg'
+import { joinPath } from '@hipuku/dtcg'
 import { SAMPLES } from '@/samples'
 import hausTokens from '@/samples/haus.tokens.json?raw'
 import { compareFormats } from './compare'

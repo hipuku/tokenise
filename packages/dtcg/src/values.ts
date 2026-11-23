@@ -8,7 +8,7 @@ import {
   toGamut,
   type Color,
 } from 'culori'
-import type { ColorValue, DimensionValue, DurationValue } from './types'
+import type { ColorValue, DimensionValue, DurationValue } from './types.js'
 
 /* ─── Colour ──────────────────────────────────────────────────────────────────
    DTCG 2025.10 names its colour spaces after CSS Color 4. culori names them

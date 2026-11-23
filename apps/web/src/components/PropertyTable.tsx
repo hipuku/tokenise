@@ -1,4 +1,4 @@
-import { FORMAT_LABEL } from '@/engine/types'
+import { FORMAT_LABEL } from '@hipuku/dtcg'
 import { verdict, type FormatSnippet } from '@/lib/compare'
 import type { Example } from '@/lib/examples'
 import { OutcomeMark } from './OutcomeMark'

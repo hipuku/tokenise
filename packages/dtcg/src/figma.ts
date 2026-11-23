@@ -1,7 +1,7 @@
-import { baseName, isRecord, Losses, mergeTokens, parseJson, type InputDocument } from './document'
-import { readDtcgTree } from './dtcgRead'
-import { setAtPath } from './dtcgWrite'
-import { indexTokens, resolveValue, untypedDetail, valueIn } from './resolve'
+import { baseName, isRecord, Losses, mergeTokens, parseJson, type InputDocument } from './document.js'
+import { readDtcgTree } from './dtcgRead.js'
+import { setAtPath } from './dtcgWrite.js'
+import { indexTokens, resolveValue, untypedDetail, valueIn } from './resolve.js'
 import {
   COMPOSITE_TYPES,
   joinPath,
@@ -11,8 +11,8 @@ import {
   type TokenValue,
   type WriteOptions,
   type WriteResult,
-} from './types'
-import { colourToSrgb, dimensionToPx, isColorValue, isDimensionValue, isDurationValue, parseCssColour, parseDimensionOrZero } from './values'
+} from './types.js'
+import { colourToSrgb, dimensionToPx, isColorValue, isDimensionValue, isDurationValue, parseCssColour, parseDimensionOrZero } from './values.js'
 
 /* ─────────────────────────────────────────────────────────────────────────────
    Figma's native variables export is DTCG-shaped JSON, one file per mode, with

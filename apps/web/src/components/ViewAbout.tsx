@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { BulletItem, BulletList, DataTable, ExternalLink, InlineCode, Section, ViewContainer } from 'kern'
-import { LOSS_REASONS } from '@/engine/types'
+import { LOSS_REASONS } from '@hipuku/dtcg'
 import { REASON } from '@/lib/describe'
 import { OutcomeMark } from './OutcomeMark'
 

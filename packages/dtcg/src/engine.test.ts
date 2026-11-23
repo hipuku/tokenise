@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest'
-import { convert, read, write } from './convert'
-import { detectFormat } from './detect'
-import { ReadError, joinPath, type FormatId, type LossEntry, type TokenSet } from './types'
+import { convert, read, write } from './convert.js'
+import { detectFormat } from './detect.js'
+import { ReadError, joinPath, type FormatId, type LossEntry, type TokenSet } from './types.js'
 import modesText from './fixtures/modes.dtcg.json?raw'
 import studioText from './fixtures/tokens-studio.json?raw'
 import themeText from './fixtures/theme.css?raw'
 import figmaLight from './fixtures/figma-Light.tokens.json?raw'
 import figmaDark from './fixtures/figma-Dark.tokens.json?raw'
-import hausText from '../samples/haus.tokens.json?raw'
-import kernText from '../samples/kern-primitives.css?raw'
+import hausText from './fixtures/haus.tokens.json?raw'
+import kernText from './fixtures/kern-primitives.css?raw'
 
 const SAMPLES: Record<string, string> = { 'haus.tokens.json': hausText, 'kern-primitives.css': kernText }
 const sample = (file: string) => ({ name: file, text: SAMPLES[file] })

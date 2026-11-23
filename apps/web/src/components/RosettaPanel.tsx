@@ -1,6 +1,6 @@
 import { Check } from 'lucide-react'
 import { Card, CopyButton, focusRing } from 'kern'
-import { FORMAT_LABEL, type Token, type TokenSet } from '@/engine/types'
+import { FORMAT_LABEL, type Token, type TokenSet } from '@hipuku/dtcg'
 import { compareFormats } from '@/lib/compare'
 import { cn } from '@/lib/utils'
 import { REASON } from '@/lib/describe'

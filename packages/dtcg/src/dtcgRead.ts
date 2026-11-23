@@ -5,8 +5,8 @@ import {
   parseJson,
   type InputDocument,
   type Losses,
-} from './document'
-import { ReadError, TOKEN_TYPES, type Token, type TokenSet, type TokenType, type TokenValue } from './types'
+} from './document.js'
+import { ReadError, TOKEN_TYPES, type Token, type TokenSet, type TokenType, type TokenValue } from './types.js'
 import {
   isColorValue,
   isCubicBezier,
@@ -19,7 +19,7 @@ import {
   parseDuration,
   parseFontFamily,
   parseFontWeight,
-} from './values'
+} from './values.js'
 
 /* ─────────────────────────────────────────────────────────────────────────────
    Reads DTCG JSON: a single 2025.10 token file, a resolver document with its

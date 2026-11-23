@@ -1,6 +1,6 @@
-import type { FormatId } from '@/engine/types'
-import { colourToCss } from '@/engine/values'
-import type { ColorValue } from '@/engine/types'
+import type { FormatId } from '@hipuku/dtcg'
+import { colourToCss } from '@hipuku/dtcg'
+import type { ColorValue } from '@hipuku/dtcg'
 import type { FormatSnippet } from './compare'
 
 /**

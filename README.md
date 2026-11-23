@@ -20,10 +20,11 @@ React 19, TypeScript, Vite, Tailwind CSS v4, [kern](https://github.com/hipuku/ke
 
 ```bash
 pnpm install
+pnpm build   # the packages, which the app imports from dist
 pnpm dev
 ```
 
-`pnpm test`, `pnpm lint` and `pnpm typecheck` run the checks CI runs. The app is in `apps/web`.
+`pnpm test`, `pnpm lint` and `pnpm typecheck` run the checks CI runs. The app is in `apps/web` and the conversion engine is `@hipuku/dtcg`, in `packages/dtcg`.
 
 ## Licence
 

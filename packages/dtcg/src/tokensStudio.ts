@@ -1,6 +1,6 @@
-import { baseName, isRecord, Losses, mergeTokens, parseJson, type InputDocument } from './document'
-import { setAtPath } from './dtcgWrite'
-import { indexTokens, resolveValue, sameValue, untypedDetail, valueIn } from './resolve'
+import { baseName, isRecord, Losses, mergeTokens, parseJson, type InputDocument } from './document.js'
+import { setAtPath } from './dtcgWrite.js'
+import { indexTokens, resolveValue, sameValue, untypedDetail, valueIn } from './resolve.js'
 import {
   ReadError,
   joinPath,
@@ -10,7 +10,7 @@ import {
   type TokenType,
   type TokenValue,
   type WriteResult,
-} from './types'
+} from './types.js'
 import {
   colourToSrgb,
   containsCurlyReference,
@@ -27,7 +27,7 @@ import {
   parseDimensionOrZero,
   parseFontFamily,
   parseFontWeight,
-} from './values'
+} from './values.js'
 
 /* ─────────────────────────────────────────────────────────────────────────────
    Tokens Studio predates the DTCG spec and still carries the types it had
