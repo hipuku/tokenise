@@ -1,0 +1,63 @@
+{
+  "name": "@hipuku/colour",
+  "version": "0.1.0",
+  "description": "Colour maths for design tools: CIEDE2000, WCAG contrast, OKLCH hue families, perceptual clustering, lightness scales and colour naming, with 31,900 colour names on a subpath.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "author": "hipuku",
+  "homepage": "https://github.com/hipuku/tokenise/tree/main/packages/colour#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hipuku/tokenise.git",
+    "directory": "packages/colour"
+  },
+  "keywords": [
+    "colour",
+    "color",
+    "ciede2000",
+    "contrast",
+    "oklch",
+    "colour-names",
+    "design-tokens"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./names": {
+      "types": "./dist/names/index.d.ts",
+      "default": "./dist/names/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "chroma-js": "^3.3.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/chroma-js": "^3.1.3",
+    "eslint": "^10.14.0",
+    "globals": "^17.14.0",
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^5.1.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}
