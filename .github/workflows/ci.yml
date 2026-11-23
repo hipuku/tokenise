@@ -17,53 +17,49 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+      - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
-          cache: npm
+          cache: pnpm
 
-      # kern is pinned as GitHub source and the lockfile records it over SSH.
-      # kern is public, so plain HTTPS reaches it with no key and no token.
-      - name: Fetch GitHub dependencies over HTTPS
-        run: |
-          git config --global --add url."https://github.com/".insteadOf "ssh://git@github.com/"
-          git config --global --add url."https://github.com/".insteadOf "git@github.com:"
-
+      # kern is pinned to a commit and pnpm fetches it as a codeload tarball
+      # over HTTPS, so no key, token or URL rewrite is needed.
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Lint
-        run: npm run lint
+        run: pnpm run lint
 
       # House style does not use an em dash. Ratcheted against a baseline, as in
       # kern: new ones fail, and existing ones can only come down.
       - name: Lint prose
-        run: npm run lint:prose
+        run: pnpm run lint:prose
 
       - name: Typecheck
-        run: npm run typecheck
+        run: pnpm run typecheck
 
       - name: Test
-        run: npm test
+        run: pnpm test
 
       - name: Build
-        run: npm run build
+        run: pnpm run build
 
       # The unit suite renders in jsdom, which has no layout and no colour, so
       # contrast, focus visibility and the worker are only checked here, in a
       # real browser against the production build.
       - name: Install Playwright
-        run: npx playwright install chromium --with-deps
+        run: pnpm --filter web exec playwright install chromium --with-deps
 
       - name: End-to-end
-        run: npm run e2e
+        run: pnpm run e2e
 
       - name: Keep the trace when it fails
         if: failure()
         uses: actions/upload-artifact@v7
         with:
           name: playwright-traces
-          path: test-results/
+          path: apps/web/test-results/
           retention-days: 7
 
   deploy:
@@ -75,23 +71,19 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+      - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
-          cache: npm
+          cache: pnpm
 
-      # kern is pinned as GitHub source and the lockfile records it over SSH.
-      # kern is public, so plain HTTPS reaches it with no key and no token.
-      - name: Fetch GitHub dependencies over HTTPS
-        run: |
-          git config --global --add url."https://github.com/".insteadOf "ssh://git@github.com/"
-          git config --global --add url."https://github.com/".insteadOf "git@github.com:"
-
+      # kern is pinned to a commit and pnpm fetches it as a codeload tarball
+      # over HTTPS, so no key, token or URL rewrite is needed.
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: npm run build
+        run: pnpm run build
 
 
       - name: Deploy
@@ -99,7 +91,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=tokenise --branch=main --commit-dirty=true
+          command: pages deploy apps/web/dist --project-name=tokenise --branch=main --commit-dirty=true
 
       # A green deploy is not evidence the site changed. gray-scott served a
       # nineteen-day-old build while CI, the deploy job and the URL were all
@@ -109,7 +101,7 @@ jobs:
       # renames it on any content change.
       - name: Verify the live site serves this build
         run: |
-          BUILT=$(ls dist/assets | grep -E '^index-.*\.js$' | head -1)
+          BUILT=$(ls apps/web/dist/assets | grep -E '^index-.*\.js$' | head -1)
           echo "built: $BUILT"
           for i in $(seq 1 10); do
             LIVE=$(curl -fsSL --max-time 20 "$SITE" | grep -oE 'index-[A-Za-z0-9_-]+\.js' | head -1 || true)

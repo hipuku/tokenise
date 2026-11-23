@@ -16,7 +16,7 @@ export default defineConfig({
     viewport: { width: 1440, height: 900 },
   },
   webServer: {
-    command: 'npm run build && npm run preview -- --port 4184 --strictPort',
+    command: 'pnpm run build && pnpm run preview --port 4184 --strictPort',
     url: 'http://localhost:4184',
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,

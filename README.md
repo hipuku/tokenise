@@ -19,11 +19,11 @@ React 19, TypeScript, Vite, Tailwind CSS v4, [kern](https://github.com/hipuku/ke
 ## Development
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
-`npm test`, `npm run lint` and `npm run typecheck` run the checks CI runs.
+`pnpm test`, `pnpm lint` and `pnpm typecheck` run the checks CI runs. The app is in `apps/web`.
 
 ## Licence
 

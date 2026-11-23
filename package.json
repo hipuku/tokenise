@@ -1,57 +1,18 @@
 {
   "name": "tokenise",
   "private": true,
+  "packageManager": "pnpm@10.30.3",
   "engines": {
     "node": ">=22.12.0"
   },
-  "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm -r run build",
+    "lint": "pnpm -r run lint",
     "lint:prose": "node scripts/check-punctuation.mjs",
-    "typecheck": "tsc -b",
-    "preview": "vite preview",
-    "test": "vitest run",
-    "e2e": "playwright test",
-    "test:watch": "vitest"
-  },
-  "dependencies": {
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "culori": "^4.0.2",
-    "kern": "github:hipuku/kern#v1.5.0",
-    "lucide-react": "^1.58.0",
-    "react": "^19.3.1",
-    "react-dom": "^19.3.1",
-    "react-simple-code-editor": "^0.14.1",
-    "tailwind-merge": "^3.7.0",
-    "tw-animate-css": "^1.4.0"
-  },
-  "devDependencies": {
-    "@axe-core/playwright": "^4.14.0",
-    "@eslint/js": "^10.0.1",
-    "@playwright/test": "^1.64.1",
-    "@tailwindcss/vite": "^4.3.5",
-    "@testing-library/jest-dom": "^7.0.1",
-    "@testing-library/react": "^16.3.3",
-    "@testing-library/user-event": "^14.6.8",
-    "@types/culori": "^4.0.1",
-    "@types/node": "^24.19.2",
-    "@types/react": "^19.3.0",
-    "@types/react-dom": "^19.3.0",
-    "@vitejs/plugin-react": "^6.3.0",
-    "eslint": "^10.14.0",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.7",
-    "globals": "^17.14.0",
-    "jsdom": "^31.0.1",
-    "tailwindcss": "^4.3.0",
-    "typescript": "^6.0.2",
-    "typescript-eslint": "^8.72.1",
-    "vite": "^8.3.8",
-    "vitest": "^5.1.0",
-    "vitest-axe": "^0.1.0"
+    "typecheck": "pnpm -r run typecheck",
+    "test": "pnpm -r run test",
+    "e2e": "pnpm --filter web e2e"
   }
 }
